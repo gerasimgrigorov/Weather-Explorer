@@ -15,8 +15,8 @@ export default function WeatherWidget({ location }) {
       <div><h1 className={`weather-icon-main-page ${className}`}><FontAwesomeIcon icon={icon}/></h1></div>
       <div>{address}</div>
       <div style={{margin: '0 0.3em'}}>
-        {currTempCelsius} celsius/{" "}
-        {currTempFahrenheit} fahrenheit
+        {currTempCelsius} °C/{" "}
+        {currTempFahrenheit} °F
       </div>{" "}
       <div style={{ marginTop: '0.6em', marginBottom: '0.8em'}}>
         <Link to={`/weather/${address}`}><button className="see-more-btn" type="button">See more</button></Link>

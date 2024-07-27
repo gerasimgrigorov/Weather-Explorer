@@ -1,19 +1,9 @@
 #root {
   width: 70%;
   margin: 0 auto;
-  /* padding: 2rem; */
   text-align: center;
 }
-
-/* .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-} */
-
 .search-input{
-  /* background-color: rgba(240,240,240, 0.5); */
   border-radius: 6px;
   margin: 0 auto;
   width: 50%;
@@ -33,7 +23,7 @@
   font-weight: 600;
   /* border: 1px solid darkslategray; */
   background-color: rgba(246, 246, 246, 0.3);
-  max-width: 80%;
+  min-width: 240px;
   border-radius: 12px;
   padding: 0.4em;
   margin: 0.6em;
@@ -45,14 +35,14 @@
 }
 
 .weather-icon-main-page {
-  font-size: 84px;
-  margin: 0.5em;
+  font-size: 105px;
+  margin: 0.35em;
 }
 
 .see-more-btn{
   border: none;
   font-size: 14px;
-  background-color: rgb(105, 186, 213);
+  background-color: rgb(65, 81, 188);
   color: white;
 }
 
@@ -202,10 +192,11 @@
 @media screen and (max-width: 576px) {
   #root{
     width: 100%;
+    padding: 0 0.1em;
   }
 
   .search-input{
-    width: auto;
+    width: 80%;
     padding: 0 0.4em
   }
 
