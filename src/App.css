@@ -3,25 +3,24 @@
   margin: 0 auto;
   text-align: center;
 }
-.search-input{
+.search-input {
   border-radius: 6px;
   margin: 0 auto;
   width: 50%;
 }
 
-.search-input:hover{
+.search-input:hover {
   border: none !important;
 }
 
-.weather-list{
+.weather-list {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.location-card{
+.location-card {
   font-weight: 600;
-  /* border: 1px solid darkslategray; */
   background-color: rgba(246, 246, 246, 0.3);
   min-width: 240px;
   border-radius: 12px;
@@ -30,7 +29,7 @@
   transition: 0.4s ease;
 }
 
-.location-card:hover{
+.location-card:hover {
   box-shadow: 0px 0px 12px 0.2px #6b6b6b;
 }
 
@@ -39,57 +38,71 @@
   margin: 0.35em;
 }
 
-.see-more-btn{
+.see-more-btn {
   border: none;
   font-size: 14px;
   background-color: rgb(65, 81, 188);
   color: white;
 }
 
-.single-weather-main{
+/* more weather info */
+
+.single-weather-main {
   width: 100%;
-  /* padding: 0 24px; */
   margin: 1em auto;
 }
 
-.single-weather-card{
+.single-weather-card {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
   justify-content: center;
-
 }
 
-.single-weather-header{
-  text-align: start;
+.single-weather-header {
+  display: flex;
+  align-items: center;
 }
 
-.single-location-name{
+.single-location-name {
   font-size: 36px;
   font-weight: 600;
+  margin-left: 6px;
 }
 
-.day-weather-icon{
+.align-start {
+  margin: 20px 0;
+}
+
+.widget-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* more weather info end  */
+
+.day-weather-icon {
   font-size: 52px;
   text-shadow: 2px 2px 2px rgba(black, 0.9);
   color: yellow;
 }
 
-.celsius{
+.celsius {
   font-size: 26px;
   font-weight: 600;
 }
 
-.fahrenheit{
+.fahrenheit {
   font-size: 22px;
   font-weight: 500;
 }
 
-.align-start{
+.align-start {
   text-align: start;
 }
 
-.forecast-list{
+.forecast-list {
   width: 100%;
   padding: 1em 0;
   margin: 0;
@@ -98,12 +111,12 @@
   overflow-x: auto;
 }
 
-.first-forecast-child{
+.first-forecast-child {
   margin-left: 0 !important;
 }
 
-.last-forecast-child{
-    margin-right: 0 !important;
+.last-forecast-child {
+  margin-right: 0 !important;
 }
 
 /* scrollbar */
@@ -114,13 +127,13 @@
 }
 
 .forecast-list::-webkit-scrollbar-track {
-  background-color: rgba(238, 238, 238, 0.6); 
-  border-radius: 10px; 
+  background-color: rgba(238, 238, 238, 0.6);
+  border-radius: 10px;
 }
 
 .forecast-list::-webkit-scrollbar-thumb {
-  background: #7f7f7f; 
-  border-radius: 10px; 
+  background: #7f7f7f;
+  border-radius: 10px;
 }
 
 /* scrollbar end */
@@ -132,13 +145,13 @@
   font-weight: 600;
   color: rgb(30, 30, 30);
   padding: 0.3em;
-  background-color: rgba(238, 238, 238, 0.3);
+  background-color: rgba(238, 238, 238, 0.4);
   margin: 0 0.3em;
   transition: 0.4s;
 }
 
 .single-weather-day-summary:hover {
-  background-color: rgba(230, 230, 230, 0.2);
+  background-color: rgba(230, 230, 230, 0.7);
 }
 
 /* weather icons styles */
@@ -148,68 +161,70 @@
 }
 
 .weather-icon-clear {
-  color: #FFD700; 
+  color: #ffd700;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .weather-icon-partially-cloudy {
-  color: #B0C4DE; 
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+  color: #b0c4de;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .weather-icon-overcast {
-  color: #697f95; 
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+  color: #697f95;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .weather-icon-rain {
-  color: #4682B4;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+  color: #4682b4;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .weather-icon-default {
-  color: #FF4500; 
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); 
+  color: #ff4500;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
 }
-
 
 /* weather icons styles end  */
 
-.alert-message{
-  background-color: #F44336;
+.alert-message {
+  background-color: #f44336;
 }
 
 @media screen and (max-width: 1200px) {
-  #root{
+  #root {
     width: 80%;
   }
 }
 
 @media screen and (max-width: 992px) {
-  #root{
+  #root {
     width: 85%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  #root{
+  #root {
     width: 90%;
+  }
+  .widget-row {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
-
 @media screen and (max-width: 576px) {
-  #root{
+  #root {
     width: 100%;
     padding: 0 0.1em;
   }
 
-  .search-input{
+  .search-input {
     width: 80%;
-    padding: 0 0.4em
+    padding: 0 0.4em;
   }
 
-  .single-weather-main{
+  .single-weather-main {
     width: 95%;
   }
 }

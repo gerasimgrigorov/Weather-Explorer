@@ -1,39 +1,29 @@
+// src/pages/SingleWeatherPage.jsx
 import axios from "axios";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import { toCelsius } from "../../utils/formulas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 import ForecastList from "../components/ForecastList";
+import SunriseSunsetWidget from "../components/details/SunriseSunsetWidget";
+import UVWidget from "../components/details/UVWidget";
+import WindSpeedWidget from "../components/details/WindSpeedWidget";
+import HumidityWidget from "../components/details/HumidityWidget";
 
 export default function SingleWeatherPage() {
   const location = useLoaderData();
   console.log(location);
-  // const places = [...response.data.locations]
-  // render the places and the params
-  // see what you will get and filter the places to get the info only for the current place and display the data
-  // also think of other option to get the data
-  //choose other weather info provider
-  // const params = useParams()
-  // const currLocation = places.filter(place => place.address === params.locationId)
 
-  // const { address, name, days, timezone } = currLocation
-  // let options = {
-  //   timeZone: timezone,
-  //   year: 'numeric',
-  //   month: 'numeric',
-  //   day: 'numeric',
-  //   hour: 'numeric',
-  //   minute: 'numeric',
-  //   second: 'numeric',
-  // }
-  // make it give the time of the location
-  // console.log(currLocation)
+  // Dummy data
+  const sunrise = "06:00";
+  const sunset = "20:00";
+  const uvIndex = 5;
+  const windSpeed = 15;
+  const humidity = 65;
 
   return (
     <section className="single-weather-main">
-      {/* <h1>Single Weather Page</h1> */}
-
       <div className="single-weather-card">
         <div className="single-weather-header">
           <span style={{ fontSize: "20px" }}>
@@ -49,23 +39,23 @@ export default function SingleWeatherPage() {
           </span>
           <span className="fahrenheit"> {location.days[0].temp}°F</span>
         </div>
-        {/* <span class="day-weather-icon">
-          <FontAwesomeIcon icon={faSun} />
-        </span> */}
         <h3 className="align-start">Forecast for the next 7 days:</h3>
-        <ForecastList days={location.days}/> {/* funckciq koqto opredelq iconata */}
+        <ForecastList days={location.days} />{" "}
         <h3 className="align-start">Other details:</h3>
-        <span>wind presure sunset windspeed moisture</span>
+        <div className="widget-row">
+          <SunriseSunsetWidget sunrise={sunrise} sunset={sunset} />
+          <UVWidget uvIndex={uvIndex} />
+          <WindSpeedWidget windSpeed={windSpeed} />
+          <HumidityWidget humidity={humidity} />
+        </div>
       </div>
-      {/* make an inferesting card with the rest of the application information like wind and sunrise or something  */}
-      {/* then see how to send a request with the input serch and display 404 page if the requested location is not found */}
     </section>
   );
 }
 
 export async function loader({ params }) {
   const { locationId } = params;
-  const apiKey = import.meta.env.VITE_WEATHER_API_KEY
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
   const response = await axios.get(
     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locationId}?key=${apiKey}`

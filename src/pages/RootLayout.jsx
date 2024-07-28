@@ -12,7 +12,6 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-
 import { Link, Outlet } from "react-router-dom";
 
 const pages = ["Home", "Europe", "UK"];
@@ -39,10 +38,9 @@ function ResponsiveAppBar() {
 
   return (
     <>
-      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
-        <Container maxWidth="xl" >
+      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none', fontFamily: 'Poppins, sans-serif' }}>
+        <Container maxWidth="xl">
           <Toolbar disableGutters>
-            {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
             <Link to={"/"}>
               <Typography
                 variant="h6"
@@ -52,7 +50,7 @@ function ResponsiveAppBar() {
                 sx={{
                   mr: 2,
                   display: { xs: "none", md: "flex" },
-                  fontFamily: "monospace",
+                  fontFamily: "Poppins, sans-serif",
                   fontWeight: 700,
                   letterSpacing: ".3rem",
                   color: "inherit",
@@ -98,12 +96,11 @@ function ResponsiveAppBar() {
               >
                 {pages.map((page) => (
                   <MenuItem key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
+                    <Typography textAlign="center" sx={{ fontFamily: 'Poppins, sans-serif' }}>{page}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
             </Box>
-            {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
             <Typography
               variant="h5"
               noWrap
@@ -113,7 +110,7 @@ function ResponsiveAppBar() {
                 mr: 2,
                 display: { xs: "flex", md: "none" },
                 flexGrow: 1,
-                fontFamily: "monospace",
+                fontFamily: "Poppins, sans-serif",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
                 color: "inherit",
@@ -137,7 +134,7 @@ function ResponsiveAppBar() {
                 <Button
                   key={page}
                   onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block" }}
+                  sx={{ my: 2, color: "white", display: "block", fontFamily: 'Poppins, sans-serif' }}
                 >
                   {page}
                 </Button>
@@ -147,7 +144,6 @@ function ResponsiveAppBar() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />  */}
                   <Avatar src="/broken-image.jpg" />
                 </IconButton>
               </Tooltip>
@@ -169,7 +165,7 @@ function ResponsiveAppBar() {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Typography textAlign="center" sx={{ fontFamily: 'Poppins, sans-serif' }}>{setting}</Typography>
                   </MenuItem>
                 ))}
               </Menu>
@@ -177,9 +173,9 @@ function ResponsiveAppBar() {
           </Toolbar>
         </Container>
       </AppBar>
-
       <Outlet />
     </>
   );
 }
+
 export default ResponsiveAppBar;

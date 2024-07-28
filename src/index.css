@@ -6,6 +6,10 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: fixed;
+
+  /* background: linear-gradient(0deg, rgba(178,77,236,1) 0%, rgba(224,17,199,1) 50%, rgba(255,27,185,1) 100%); */
+  /* background: linear-gradient(0deg, rgba(255,110,193,1) 0%, rgba(224,17,199,1) 42%, rgba(178,44,255,1) 100%); */
+  
   margin: 0;
   display: flex;
   min-width: 320px;

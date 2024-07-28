@@ -1,0 +1,35 @@
+.sunset-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.twilight-icon {
+  margin-right: 5px;
+}
+
+.arc-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.arc {
+  width: 70%;
+  height: auto;
+}
+
+.time-label {
+  display: block;
+  position: static;
+  flex-wrap: nowrap;
+  font-size: 1em;
+}
+
+.left, .right {
+  transform: translateY(-50%);
+}
