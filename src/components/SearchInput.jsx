@@ -116,12 +116,12 @@ export default function SearchInput({ places, setOpen }) {
                 transition: "0.5s ease"
               },
               "&:hover fieldset": {
-                borderColor: "rgba(255, 255, 255, 0.5)", // Border color on hover
+                borderColor: "rgba(255, 255, 255, 0.6)", // Border color on hover
                 borderWidth: "2px", // Border width on hover
                 transition: "0.5s ease"
               },
               "&.Mui-focused fieldset": {
-                borderColor: "rgba(255, 255, 255, 0.6)", // Border color when focused
+                borderColor: "rgba(255, 255, 255, 0.7)", // Border color when focused
                 borderWidth: "2px", // Border width when focused
               },
             },
@@ -132,7 +132,7 @@ export default function SearchInput({ places, setOpen }) {
               color: "rgba(255, 255, 255, 0.2)", // White label color
             },
             "& .MuiFormLabel-root.Mui-focused": {
-              color: "rgba(255, 255, 255, 0.5)", // White label color when focused
+              color: "rgba(255, 255, 255, 0.8)", // White label color when focused
             },
           }}
         />

@@ -1,5 +1,5 @@
 #root {
-  width: 70%;
+  width: 65%;
   margin: 0 auto;
   text-align: center;
 }
@@ -47,7 +47,8 @@
 }
 
 .single-weather-main{
-  width: 90%;
+  width: 100%;
+  /* padding: 0 24px; */
   margin: 1em auto;
 }
 
@@ -97,6 +98,14 @@
   overflow-x: auto;
 }
 
+.first-forecast-child{
+  margin-left: 0 !important;
+}
+
+.last-forecast-child{
+    margin-right: 0 !important;
+}
+
 /* scrollbar */
 
 .forecast-list::-webkit-scrollbar {
@@ -110,7 +119,7 @@
 }
 
 .forecast-list::-webkit-scrollbar-thumb {
-  background: #b0b0b0; 
+  background: #7f7f7f; 
   border-radius: 10px; 
 }
 

@@ -44,7 +44,7 @@ export default function IndexPage() {
         </Alert>
       </Collapse>
 
-      <h2>
+      <h2 style={{marginTop: "0.6em"}}>
         Wellcome to{" "}
         <span style={{ textDecoration: "underline" }}>weather4me.com</span>!
       </h2>

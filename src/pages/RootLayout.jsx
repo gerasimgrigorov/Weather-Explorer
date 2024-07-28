@@ -40,7 +40,7 @@ function ResponsiveAppBar() {
   return (
     <>
       <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none'}}>
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" >
           <Toolbar disableGutters>
             {/* <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} /> */}
             <Link to={"/"}>
@@ -130,7 +130,7 @@ function ResponsiveAppBar() {
               sx={{
                 flexGrow: 1,
                 display: { xs: "none", md: "flex" },
-                justifyContent: "end",
+                justifyContent: "center",
               }}
             >
               {pages.map((page) => (
@@ -144,10 +144,10 @@ function ResponsiveAppBar() {
               ))}
             </Box>
 
-            {/* <Box sx={{ flexGrow: 0 }}>
+            <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> 
+                  {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />  */}
                   <Avatar src="/broken-image.jpg" />
                 </IconButton>
               </Tooltip>
@@ -173,7 +173,7 @@ function ResponsiveAppBar() {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box> */}
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>

@@ -1,12 +1,14 @@
 import { toCelsius, getDayOfWeek, getWeatherIcon } from "../../utils/formulas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function SingleTempBadge({ day }) {
+export default function SingleTempBadge({ day, specialClass }) {
   const {icon, className } = getWeatherIcon(day.conditions)
+  const firstChildClass = specialClass === "first-forecast-child" ? "first-forecast-child" : ""
+  const lastChildClass = specialClass === "last-forecast-child" ? "last-forecast-child" : ""
 
   return (
     <div>
-      <li className="single-weather-day-summary">
+      <li className={`single-weather-day-summary ${firstChildClass} ${lastChildClass}`}>
         <div>
           <span>{getDayOfWeek(day.datetime)}</span>
         </div>
