@@ -16,11 +16,13 @@ export default function SingleWeatherPage() {
   console.log(location);
 
   // Dummy data
-  const sunrise = "06:00";
-  const sunset = "20:00";
-  const uvIndex = 5;
-  const windSpeed = 15;
-  const humidity = 65;
+  const sunrise = location.days[0].sunrise;
+  const sunset = location.days[0].sunset;
+  const uvIndex = location.days[0].uvindex;
+  const windSpeed = location.days[0].windspeed;
+  const humidity = location.days[0].humidity;
+
+  console.log(sunrise)
 
   return (
     <section className="single-weather-main">

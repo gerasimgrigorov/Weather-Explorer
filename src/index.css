@@ -4,7 +4,7 @@ body{
   font-family: "Poppins", sans-serif;
   background-image: url("https://images.unsplash.com/photo-1616071906060-1f425a639465?q=80&w=2066&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size:cover;
   background-position: fixed;
 
   /* background: linear-gradient(0deg, rgba(178,77,236,1) 0%, rgba(224,17,199,1) 50%, rgba(255,27,185,1) 100%); */

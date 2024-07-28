@@ -145,13 +145,13 @@
   font-weight: 600;
   color: rgb(30, 30, 30);
   padding: 0.3em;
-  background-color: rgba(238, 238, 238, 0.4);
+  background-color: rgba(238, 238, 238, 0.5);
   margin: 0 0.3em;
   transition: 0.4s;
 }
 
 .single-weather-day-summary:hover {
-  background-color: rgba(230, 230, 230, 0.7);
+  background-color: rgba(230, 230, 230, 0.8);
 }
 
 /* weather icons styles */
@@ -201,15 +201,15 @@
   #root {
     width: 85%;
   }
+  .widget-row {
+    /* flex-direction: column; */
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 768px) {
   #root {
     width: 90%;
-  }
-  .widget-row {
-    flex-direction: column;
-    align-items: center;
   }
 }
 
