@@ -1,6 +1,6 @@
 .widget {
-  width: 230px;
-  height: 230px;
+  width: 210px;
+  height: 210px;
   display: flex;
   flex-direction: column;
   align-items: center;
