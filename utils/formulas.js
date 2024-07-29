@@ -42,3 +42,7 @@ export function getWeatherIcon(condition) {
     return { icon: faSun, className: "weather-icon-default" }; // Default icon
   }
 }
+
+export function formatLocation(location) {
+  return location.replace(/,/g, ', ');
+}

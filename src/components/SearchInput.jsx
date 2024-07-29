@@ -1,9 +1,7 @@
 import * as React from "react";
+import { useNavigate, useNavigation } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Autocomplete, { createFilterOptions } from "@mui/material/Autocomplete";
-
-import axios from "axios";
-import { useNavigate, useNavigation } from "react-router-dom";
 
 const filter = createFilterOptions();
 

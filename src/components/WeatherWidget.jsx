@@ -1,7 +1,8 @@
 import { getWeatherIcon, toCelsius } from "../../utils/formulas";
 import { Link, useNavigation } from "react-router-dom";
-import "../App.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { formatLocation } from "../../utils/formulas";
+import "../App.css";
 
 export default function WeatherWidget({ location }) {
   const { address, days } = location;
@@ -20,7 +21,7 @@ export default function WeatherWidget({ location }) {
         <FontAwesomeIcon icon={icon} />
       </div>
       <div className="weather-info">
-        <div style={{ fontSize: "18px", fontWeight: "bold" }}>{address}</div>
+        <div style={{ fontSize: "18px", fontWeight: "bold" }}>{formatLocation(address)}</div>
         <div style={{ fontSize: "16px" }}>
           {currTempCelsius}°C / {currTempFahrenheit}°F
         </div>

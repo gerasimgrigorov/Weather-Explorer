@@ -1,4 +1,3 @@
-import { getDayOfWeek } from "../../utils/formulas";
 import SingleTempBadge from "./SingleTempBadge";
 
 export default function ForecastList({ days }) {

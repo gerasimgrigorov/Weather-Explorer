@@ -1,11 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useLoaderData, useNavigation } from "react-router-dom";
 
 import Alert from "@mui/material/Alert";
 import IconButton from "@mui/material/IconButton";
 import Collapse from "@mui/material/Collapse";
-import Button from "@mui/material/Button";
 import CloseIcon from "@mui/icons-material/Close";
 import CircularProgress from "@mui/material/CircularProgress";
 
@@ -37,18 +36,15 @@ export async function loader() {
       
       const dataToCache = {
         timeCached: new Date().getTime(),
-        data: responce.data,
+        data: response.data,
       };
       localStorage.setItem(CACHE_KEY, JSON.stringify(dataToCache));
-      return responce.data;
+      return response.data;
     } catch (e) {
+      console.log(e.message)
       throw new Error("Failed to fetch the needed data.");
     }
   }
-
-  // return await axios.get(
-  //   `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&locations=New%20York%2CUSA%7CLondon%2CUK%7CParis%2CFrance%7CTokyo%2CJapan%7CSydney%2CAustralia&locationNames=New%20York%7CLondon%7CParis%7CTokyo%7CSydney`
-  // );
 }
 
 export default function IndexPage() {

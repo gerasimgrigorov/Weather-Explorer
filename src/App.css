@@ -229,14 +229,18 @@
   #root {
     width: 80%;
   }
+  
+  .location-card{
+    max-width: 350px;
+  }
 }
 
 @media screen and (max-width: 992px) {
   #root {
     width: 85%;
   }
+
   .widget-row {
-    /* flex-direction: column; */
     justify-content: center;
   }
 }
@@ -245,6 +249,7 @@
   #root {
     width: 90%;
   }
+
   .weather-list {
     justify-content: center;
   }
@@ -264,21 +269,24 @@
   .single-weather-main {
     width: 95%;
   }
+
   .location-card {
-    padding: 0.6em;
+    padding: 0.6em 0.7em;
     margin: 0;
   }
+
   .weather-icon-partially-cloudy{
     font-size: 60px !important;
   }
+
   .weather-icon-main-page {
-    max-width: 80px;
+    max-width: 70px;
     margin-right: 0.2em;
   }
+
   .weather-button-more{
     max-width: 70px;
   }
-  
 }
 
 @media screen and (max-width: 468px) {
