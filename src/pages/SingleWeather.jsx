@@ -13,16 +13,13 @@ import HumidityWidget from "../components/details/HumidityWidget";
 
 export default function SingleWeatherPage() {
   const location = useLoaderData();
-  console.log(location);
+  // console.log(location);
 
-  // Dummy data
   const sunrise = location.days[0].sunrise;
   const sunset = location.days[0].sunset;
   const uvIndex = location.days[0].uvindex;
   const windSpeed = location.days[0].windspeed;
   const humidity = location.days[0].humidity;
-
-  console.log(sunrise)
 
   return (
     <section className="single-weather-main">
@@ -46,8 +43,8 @@ export default function SingleWeatherPage() {
         <h3 className="align-start">Other details:</h3>
         <div className="widget-row">
           <SunriseSunsetWidget sunrise={sunrise} sunset={sunset} />
-          <UVWidget uvIndex={uvIndex} />
           <WindSpeedWidget windSpeed={windSpeed} />
+          <UVWidget uvIndex={uvIndex} />
           <HumidityWidget humidity={humidity} />
         </div>
       </div>

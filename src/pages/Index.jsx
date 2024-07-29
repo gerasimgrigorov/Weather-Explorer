@@ -2,25 +2,61 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLoaderData, useNavigation } from "react-router-dom";
 
-import Alert from '@mui/material/Alert';
-import IconButton from '@mui/material/IconButton';
-import Collapse from '@mui/material/Collapse';
-import Button from '@mui/material/Button';
-import CloseIcon from '@mui/icons-material/Close';
+import Alert from "@mui/material/Alert";
+import IconButton from "@mui/material/IconButton";
+import Collapse from "@mui/material/Collapse";
+import Button from "@mui/material/Button";
+import CloseIcon from "@mui/icons-material/Close";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import WeatherWidget from "../components/WeatherWidget";
 import WeatherList from "../components/WeatherList";
 import SearchInput from "../components/SearchInput";
 
+const CACHE_KEY = "weatherData";
+const CACHE_EXP = 3600000;
+
+function isCacheValid(cachedData) {
+  if (!cachedData) return false;
+  const { timeCached } = cachedData;
+  const now = new Date().getTime();
+  return now - timeCached < CACHE_EXP;
+}
+
+export async function loader() {
+  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+  const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
+
+  if (isCacheValid(cachedData)) {
+    return cachedData.data;
+  } else {
+    try {
+      const responce = await axios.get(
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&locations=New%20York%2CUSA%7CLondon%2CUK%7CParis%2CFrance%7CTokyo%2CJapan%7CSydney%2CAustralia&locationNames=New%20York%7CLondon%7CParis%7CTokyo%7CSydney`
+      );
+      const dataToCache = {
+        timeCached: new Date().getTime(),
+        data: responce.data,
+      };
+      localStorage.setItem(CACHE_KEY, JSON.stringify(dataToCache));
+      return responce.data;
+    } catch (e) {
+      throw new Error("Failed to fetch the needed data.");
+    }
+  }
+
+  // return await axios.get(
+  //   `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&locations=New%20York%2CUSA%7CLondon%2CUK%7CParis%2CFrance%7CTokyo%2CJapan%7CSydney%2CAustralia&locationNames=New%20York%7CLondon%7CParis%7CTokyo%7CSydney`
+  // );
+}
+
 export default function IndexPage() {
   const response = useLoaderData();
-  const [open, setOpen] = useState(false)
+  console.log(response);
+  const places = [...response.locations];
 
-  const places = [...response.data.locations];
-  // console.log(places)
-
+  const [open, setOpen] = useState(false);
   const navigation = useNavigation();
-  // console.log(navigation.state);
 
   return (
     <div className="">
@@ -44,7 +80,7 @@ export default function IndexPage() {
         </Alert>
       </Collapse>
 
-      <h2 style={{marginTop: "0.6em"}}>
+      <h2 style={{ marginTop: "0.6em" }}>
         Wellcome to{" "}
         <span style={{ textDecoration: "underline" }}>weather4me.com</span>!
       </h2>
@@ -58,17 +94,15 @@ export default function IndexPage() {
 
       <h3>Popular destination around the world.</h3>
 
-      <WeatherList>
-        {places.map(place => <WeatherWidget key={place.latitude} location={place} />)}
-      </WeatherList>
+      {response ? (
+        <WeatherList>
+          {places.map((place) => (
+            <WeatherWidget key={place.latitude} location={place} />
+          ))}
+        </WeatherList>
+      ) : (
+        <CircularProgress color="secondary" />
+      )}
     </div>
-  );
-}
-
-export async function loader() {
-  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-
-  return await axios.get(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&locations=New%20York%2CUSA%7CLondon%2CUK%7CParis%2CFrance%7CTokyo%2CJapan%7CSydney%2CAustralia&locationNames=New%20York%7CLondon%7CParis%7CTokyo%7CSydney`
   );
 }
