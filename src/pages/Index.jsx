@@ -31,9 +31,10 @@ export async function loader() {
     return cachedData.data;
   } else {
     try {
-      const responce = await axios.get(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&locations=New%20York%2CUSA%7CLondon%2CUK%7CParis%2CFrance%7CTokyo%2CJapan%7CSydney%2CAustralia&locationNames=New%20York%7CLondon%7CParis%7CTokyo%7CSydney`
+      const response = await axios.get(
+        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&locations=New%20York%2CUSA%7CLondon%2CUK%7CTokyo%2CJapan%7CSydney%2CAustralia&locationNames=New%20York%7CLondon%7CTokyo%7CSydney`
       );
+      
       const dataToCache = {
         timeCached: new Date().getTime(),
         data: responce.data,
