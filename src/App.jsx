@@ -17,7 +17,7 @@ const router = createBrowserRouter([
         loader: placesLoader,
       },
       {
-        path: "weather/:locationId",
+        path: "search",
         element: <SingleWeatherPage />,
         loader: singleWeatherLoader
       },

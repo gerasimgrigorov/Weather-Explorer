@@ -11,9 +11,27 @@ import UVWidget from "../components/details/UVWidget";
 import WindSpeedWidget from "../components/details/WindSpeedWidget";
 import HumidityWidget from "../components/details/HumidityWidget";
 
+export async function loader({ request }) {
+  const url = new URL(request.url);
+  const query = url.searchParams.get("q");
+
+  if (!query) {
+    throw new Error("Query parameter 'q' is missing.");
+  }
+
+  try {
+    const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
+    const response = await axios.get(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${encodeURIComponent(query)}?key=${apiKey}`
+    );
+    return response.data;
+  } catch (e) {
+    throw new Error("Failed to fetch weather data.");
+  }
+}
+
 export default function SingleWeatherPage() {
   const location = useLoaderData();
-  // console.log(location);
 
   const sunrise = location.days[0].sunrise;
   const sunset = location.days[0].sunset;
@@ -50,14 +68,4 @@ export default function SingleWeatherPage() {
       </div>
     </section>
   );
-}
-
-export async function loader({ params }) {
-  const { locationId } = params;
-  const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-
-  const response = await axios.get(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locationId}?key=${apiKey}`
-  );
-  return response.data;
 }

@@ -6,30 +6,21 @@ import axios from "axios";
 import { useNavigate, useNavigation } from "react-router-dom";
 
 const filter = createFilterOptions();
-let topLocations = [];
 
 export default function SearchInput({ places, setOpen }) {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const [value, setValue] = React.useState(null);
-
-  console.log(value);
-
-  places.map((place) =>
-    topLocations.push({ title: place.address, timeZone: place.timezone })
+  
+  let topLocations = places.map((place) =>
+    ({ title: place.address, timeZone: place.timezone })
   );
 
   async function fetchWeather(location) {
     try {
-      const response = await axios.get(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=CCBXZ6PRHD64ZKUNKTPZS5TKY`
-      );
-      console.log(location);
-      navigate(`/weather/${location}`);
-      console.log(response.data);
-      return response;
+      navigate(`/search?q=${encodeURIComponent(location)}`);
     } catch (e) {
-      throw new Error("An error occured");
+      throw new Error("An error occured while trying to navigate to the search result.");
     }
   }
 
