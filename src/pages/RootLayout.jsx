@@ -13,6 +13,8 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link, Outlet } from "react-router-dom";
 
+import weatherIcon from '../assets/Weather-Icon.png'
+
 const pages = [
   { name: "Home", path: "/" },
   { name: "Europe", path: "/europe" },
@@ -61,9 +63,9 @@ function ResponsiveAppBar() {
                 }}
               >
                 <img
-                  src="https://i.pinimg.com/originals/77/0b/80/770b805d5c99c7931366c2e84e88f251.png"
+                  src={weatherIcon}
                   alt=""
-                  width={62}
+                  width={58}
                 />
               </Typography>
             </Link>
