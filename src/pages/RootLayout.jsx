@@ -13,12 +13,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Link, Outlet } from "react-router-dom";
 
-import weatherIcon from '../assets/Weather-Icon.png'
+import Footer from "../components/Footer";
+
+import weatherIcon from "../assets/Weather-Icon.png";
 
 const pages = [
   { name: "Home", path: "/" },
   { name: "Europe", path: "/europe" },
-  { name: "UK", path: "/uk" }
+  { name: "UK", path: "/uk" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -43,18 +45,93 @@ function ResponsiveAppBar() {
 
   return (
     <>
-      <AppBar position="static" style={{ background: 'transparent', boxShadow: 'none', fontFamily: 'Poppins, sans-serif' }}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <Link to={"/"}>
+      <div id="main-root-section">
+        <AppBar
+          position="static"
+          style={{
+            background: "transparent",
+            boxShadow: "none",
+            fontFamily: "Poppins, sans-serif",
+          }}
+        >
+          <Container maxWidth="xl">
+            <Toolbar disableGutters>
+              <Link to={"/"}>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="a"
+                  href="#app-bar-with-responsive-menu"
+                  sx={{
+                    mr: 2,
+                    display: { xs: "none", md: "flex" },
+                    fontFamily: "Poppins, sans-serif",
+                    fontWeight: 700,
+                    letterSpacing: ".3rem",
+                    color: "inherit",
+                    textDecoration: "none",
+                  }}
+                >
+                  <img src={weatherIcon} alt="" width={40} />
+                </Typography>
+              </Link>
+
+              <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  color="inherit"
+                >
+                  <MenuIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorElNav}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "left",
+                  }}
+                  open={Boolean(anchorElNav)}
+                  onClose={handleCloseNavMenu}
+                  sx={{
+                    display: { xs: "block", md: "none" },
+                  }}
+                  disableScrollLock={true}
+                >
+                  {pages.map(({ name, path }) => (
+                    <MenuItem key={name} onClick={handleCloseNavMenu}>
+                      <Link
+                        to={path}
+                        style={{ textDecoration: "none", color: "inherit" }}
+                      >
+                        <Typography
+                          textAlign="center"
+                          sx={{ fontFamily: "Poppins, sans-serif" }}
+                        >
+                          {name}
+                        </Typography>
+                      </Link>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
               <Typography
-                variant="h6"
+                variant="h5"
                 noWrap
                 component="a"
-                href="#app-bar-with-responsive-menu"
+                href="/"
                 sx={{
                   mr: 2,
-                  display: { xs: "none", md: "flex" },
+                  display: { xs: "flex", md: "none" },
+                  flexGrow: 1,
                   fontFamily: "Poppins, sans-serif",
                   fontWeight: 700,
                   letterSpacing: ".3rem",
@@ -62,129 +139,77 @@ function ResponsiveAppBar() {
                   textDecoration: "none",
                 }}
               >
-                <img
-                  src={weatherIcon}
-                  alt=""
-                  width={40}
-                />
+                <img src={weatherIcon} alt="" width={40} />
               </Typography>
-            </Link>
-
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              >
-                <MenuIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorElNav}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "left",
-                }}
-                open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+              <Box
                 sx={{
-                  display: { xs: "block", md: "none" },
+                  flexGrow: 1,
+                  display: { xs: "none", md: "flex" },
+                  justifyContent: "center",
                 }}
-                disableScrollLock={true}
               >
                 {pages.map(({ name, path }) => (
-                  <MenuItem key={name} onClick={handleCloseNavMenu}>
-                    <Link to={path} style={{ textDecoration: 'none', color: 'inherit' }}>
-                      <Typography textAlign="center" sx={{ fontFamily: 'Poppins, sans-serif' }}>{name}</Typography>
+                  <Button
+                    key={name}
+                    onClick={handleCloseNavMenu}
+                    sx={{
+                      my: 2,
+                      color: "white",
+                      display: "block",
+                      fontFamily: "Poppins, sans-serif",
+                    }}
+                  >
+                    <Link
+                      to={path}
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      {name}
                     </Link>
-                  </MenuItem>
+                  </Button>
                 ))}
-              </Menu>
-            </Box>
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: "flex", md: "none" },
-                flexGrow: 1,
-                fontFamily: "Poppins, sans-serif",
-                fontWeight: 700,
-                letterSpacing: ".3rem",
-                color: "inherit",
-                textDecoration: "none",
-              }}
-            >
-              <img
-                src={weatherIcon}
-                alt=""
-                width={40}
-              />
-            </Typography>
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", md: "flex" },
-                justifyContent: "center",
-              }}
-            >
-              {pages.map(({ name, path }) => (
-                <Button
-                  key={name}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: "white", display: "block", fontFamily: 'Poppins, sans-serif' }}
-                >
-                  <Link to={path} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    {name}
-                  </Link>
-                </Button>
-              ))}
-            </Box>
+              </Box>
 
-            <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar src="/broken-image.jpg" />
-                </IconButton>
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="menu-appbar"
-                anchorEl={anchorElUser}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElUser)}
-                onClose={handleCloseUserMenu}
-                disableScrollLock={true}
-              >
-                {settings.map((setting) => (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center" sx={{ fontFamily: 'Poppins, sans-serif' }}>{setting}</Typography>
-                  </MenuItem>
-                ))}
-              </Menu>
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
-      <Outlet />
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar src="/broken-image.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                  disableScrollLock={true}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography
+                        textAlign="center"
+                        sx={{ fontFamily: "Poppins, sans-serif" }}
+                      >
+                        {setting}
+                      </Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </Box>
+            </Toolbar>
+          </Container>
+        </AppBar>
+        <Outlet />
+      </div>
+      <Footer />
     </>
   );
 }

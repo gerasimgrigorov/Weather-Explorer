@@ -1,8 +1,18 @@
 #root {
-  width: 65%;
+  width: 100%;
   margin: 0 auto;
   text-align: center;
 }
+
+#main-root-section{
+  width: 65%;
+  margin: 0 auto;
+  text-align: center;
+
+  min-height: 100vh;
+}
+
+
 .search-input {
   border-radius: 6px;
   margin: 0 auto;
@@ -241,7 +251,7 @@
 }
 
 @media screen and (max-width: 1200px) {
-  #root {
+  #main-root-section {
     width: 80%;
   }
 
@@ -251,7 +261,7 @@
 }
 
 @media screen and (max-width: 992px) {
-  #root {
+  #main-root-section {
     width: 85%;
   }
 
@@ -261,7 +271,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  #root {
+  #main-root-section {
     width: 90%;
   }
 
@@ -271,7 +281,7 @@
 }
 
 @media screen and (max-width: 576px) {
-  #root {
+  #main-root-section {
     width: 100%;
     padding: 0 0.1em;
   }
