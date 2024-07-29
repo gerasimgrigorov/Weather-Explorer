@@ -2,8 +2,7 @@ import { getDayOfWeek } from "../../utils/formulas";
 import SingleTempBadge from "./SingleTempBadge";
 
 export default function ForecastList({ days }) {
-  console.log(days);
-  console.log(days.length);
+  // console.log(days);
 
   return (
     <div>

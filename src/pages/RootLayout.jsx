@@ -63,7 +63,7 @@ function ResponsiveAppBar() {
                 <img
                   src="https://i.pinimg.com/originals/77/0b/80/770b805d5c99c7931366c2e84e88f251.png"
                   alt=""
-                  width={60}
+                  width={62}
                 />
               </Typography>
             </Link>
@@ -96,6 +96,7 @@ function ResponsiveAppBar() {
                 sx={{
                   display: { xs: "block", md: "none" },
                 }}
+                disableScrollLock={true}
               >
                 {pages.map(({ name, path }) => (
                   <MenuItem key={name} onClick={handleCloseNavMenu}>
@@ -169,6 +170,7 @@ function ResponsiveAppBar() {
                 }}
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
+                disableScrollLock={true}
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>

@@ -52,7 +52,6 @@ export async function loader() {
 
 export default function IndexPage() {
   const response = useLoaderData();
-  console.log(response);
   const places = [...response.locations];
 
   const [open, setOpen] = useState(false);

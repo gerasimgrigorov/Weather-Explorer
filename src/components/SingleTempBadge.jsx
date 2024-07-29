@@ -12,7 +12,7 @@ export default function SingleTempBadge({ day, specialClass }) {
         <div>
           <span>{getDayOfWeek(day.datetime)}</span>
         </div>
-        <div>{toCelsius(day.temp).toFixed(1)}°C</div>
+        <div>{Math.round(toCelsius(day.temp))}°C</div>
         <div>
           <span className={`weather-icon ${className}`}>
             <FontAwesomeIcon icon={icon} />

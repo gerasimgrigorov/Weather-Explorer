@@ -6,7 +6,7 @@
 .search-input {
   border-radius: 6px;
   margin: 0 auto;
-  width: 50%;
+  width: 60%;
 }
 
 .search-input:hover {
@@ -58,15 +58,14 @@
   justify-content: center;
 }
 
-.single-weather-header {
+/* .single-weather-header {
   display: flex;
   align-items: center;
-}
+} */
 
 .single-location-name {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 600;
-  margin-left: 6px;
 }
 
 .align-start {
@@ -89,18 +88,18 @@
 }
 
 .celsius {
-  font-size: 26px;
+  font-size: 34px;
   font-weight: 600;
 }
 
 .fahrenheit {
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 500;
 }
 
-.align-start {
+/* .align-start {
   text-align: start;
-}
+} */
 
 .forecast-list {
   width: 100%;
@@ -145,13 +144,13 @@
   font-weight: 600;
   color: rgb(30, 30, 30);
   padding: 0.3em;
-  background-color: rgba(238, 238, 238, 0.5);
+  background-color: rgba(238, 238, 238, 0.55);
   margin: 0 0.3em;
   transition: 0.4s;
 }
 
 .single-weather-day-summary:hover {
-  background-color: rgba(230, 230, 230, 0.8);
+  background-color: rgba(230, 230, 230, 0.85);
 }
 
 /* weather icons styles */
