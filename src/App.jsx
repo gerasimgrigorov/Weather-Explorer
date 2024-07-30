@@ -9,7 +9,6 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement: <ErrorPage />, 
     children: [
       {
         index: true,
@@ -19,14 +18,21 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <SingleWeatherPage />,
-        loader: singleWeatherLoader
+        loader: singleWeatherLoader,
       },
     ],
+  },
+  {
+    path: "*", // Match any undefined routes
+    element: (
+      <RootLayout> // Wrap ErrorPage with RootLayout
+        <ErrorPage />
+      </RootLayout>
+    ),
   },
 ]);
 
 function App() {
-
   return <RouterProvider router={router} />;
 }
 
