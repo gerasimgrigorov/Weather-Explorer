@@ -12,8 +12,8 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        bgcolor: "rgba(235, 235, 235, 0.6)", // Use RGBA to set background color with opacity
-        padding: 2,
+        bgcolor: "rgba(235, 235, 235, 0.6)",
+        padding: 1,
         borderTop: "1px solid",
         borderColor: "divider",
       }}
@@ -44,9 +44,9 @@ export default function Footer() {
             alignItems: "center",
             gap: 2,
             "& .MuiIconButton-root": {
-              transition: "0.5s ease", // Apply transition to all IconButtons
+              transition: "0.5s ease", 
               "&:hover": {
-                color: "primary.main", // Change color on hover
+                color: "primary.main",
               },
             },
           }}
@@ -87,7 +87,7 @@ export default function Footer() {
             }}
           />
         </Box>
-        <Divider sx={{ my: 2 }} />
+        <Divider sx={{ my: 1 }} />
         <Typography level="body2" textAlign="center" sx={{ fontWeight: 600 }}>
           &copy; 2024 | Designed by Gerasim
         </Typography>
