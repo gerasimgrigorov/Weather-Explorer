@@ -40,7 +40,7 @@ export default function Footer() {
         <Box
           sx={{
             display: "flex",
-            padding: "0 14px",
+            padding: "0 18px",
             alignItems: "center",
             gap: 2,
             "& .MuiIconButton-root": {
