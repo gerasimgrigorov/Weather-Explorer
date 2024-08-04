@@ -1,29 +1,23 @@
-require("dotenv").config();
+const dotenv = require("dotenv");
 const express = require("express");
-const { Pool } = require("pg");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const cors = require("cors");
+dotenv.config();
+
+const authenticationRouter = require("./routers/authentication")
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
+app.use(cookieParser())
+app.use(bodyParser.json())
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true
+}))
 
-app.get("/test", async (req, res) => {
-  try {
-    const result = await pool.query("SELECT NOW()");
-    res.json({
-      status: "success",
-      time: result.rows[0].now,
-    });
-  } catch (e) {
-    console.log("Database connection error!", e);
-    res.status(500).json({
-      status: "error",
-      message: "Database connection failed",
-    });
-  }
-});
+app.use("/api", authenticationRouter)
 
 app.listen(PORT, () => {
   console.log(`LISTENING ON ${PORT}`);
