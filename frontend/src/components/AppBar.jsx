@@ -21,7 +21,7 @@ const pages = [
   { name: "Europe", path: "/europe" },
   { name: "UK", path: "/uk" },
 ];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Favourite", "Logout"];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -32,7 +32,7 @@ function NavBar() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("/api/auth/check", { withCredentials: true });
+        const response = await axios.get("/api/check", { withCredentials: true }); 
         setUser(response.data.user);
       } catch (error) {
         console.error("Not authenticated");
@@ -62,7 +62,7 @@ function NavBar() {
     try {
       await axios.post("/api/logout", {}, { withCredentials: true });
       setUser(null);
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error("Logout failed");
     }
@@ -197,7 +197,7 @@ function NavBar() {
               <>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt={user.username} src="/broken-image.jpg" />
+                    <Avatar alt={user.username.toUpperCase()} src="/broken-image.jpg" />
                   </IconButton>
                 </Tooltip>
                 <Menu

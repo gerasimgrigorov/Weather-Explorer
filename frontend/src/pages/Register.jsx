@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Form, useActionData, redirect, Link } from 'react-router-dom';
+import { Alert } from '@mui/material';
 import './Auth.css';
 
 export default function Register() {
@@ -29,7 +30,7 @@ export default function Register() {
           required
         />
         <button type="submit">Register</button>
-        {actionData?.error && <p className="error">{actionData.error}</p>}
+        {actionData?.error && <p className="error"><Alert severity="error">{actionData.error}</Alert></p>}
         <p>
           Already have an account? <Link to="/login">Login here</Link>
         </p>

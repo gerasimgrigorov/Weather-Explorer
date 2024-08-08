@@ -15,10 +15,10 @@ app.use(bodyParser.json())
 app.use(cors({
   origin: "http://localhost:5173",
   credentials: true
-}))
+}));
 
 app.use("/api", authenticationRouter)
 
 app.listen(PORT, () => {
-  console.log(`LISTENING ON ${PORT}`);
+  console.log(`Listening to port ${PORT}`);
 });
