@@ -15,6 +15,7 @@ import MenuItem from "@mui/material/MenuItem";
 import axios from "axios";
 
 import weatherIcon from "../assets/Weather-Icon.png";
+import { useUser } from "../context/UserProvider";
 
 const pages = [
   { name: "Home", path: "/" },
@@ -26,7 +27,7 @@ const settings = ["Profile", "Favourite", "Logout"];
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const [user, setUser] = useState(null);
+  const {user, setUser} = useUser()
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -195,7 +196,7 @@ function NavBar() {
           <Box sx={{ flexGrow: 0 }}>
             {user ? (
               <>
-                <Tooltip title="Open settings">
+                <Tooltip title="Open menu">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     <Avatar alt={user.username.toUpperCase()} src="/broken-image.jpg" />
                   </IconButton>

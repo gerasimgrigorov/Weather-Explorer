@@ -3,42 +3,45 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  height: 100vh;
 }
 
 .auth-form {
-  width: 350px;
+  width: 380px;
   padding: 2em;
   border-radius: 12px;
   background-color: white;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
+  position: relative; /* Add this line to position the arrow */
 }
 
 .auth-form h2 {
   margin-top: 0;
-  margin-bottom: 1em;
-  font-family: 'Poppins', sans-serif;
+  /* margin-bottom: 1em; */
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
 }
 
 .auth-form input {
   width: 100%;
-  padding: 0.5em;
-  margin-bottom: 1em;
+  padding: 0.75em 0.7em;
+  box-sizing: border-box;
+  font-size: 15px;
+  margin-bottom: 0.7em;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .auth-form button {
   width: 100%;
   padding: 0.5em;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 6px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 600;
   cursor: pointer;
 }
@@ -47,6 +50,47 @@
   background-color: #45a049;
 }
 
-.error{
+.error {
   color: red;
+}
+
+/* New CSS for the back arrow within the form */
+.back-to-home {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  font-size: 16px;
+  text-decoration: none;
+  color: #242424;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.back-to-home:hover {
+  color: #444444;
+}
+
+.back-to-home svg {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 576px) {
+  .auth-form {
+    width: 360px;
+  }
+  .auth-form input {
+    padding: 0.8em 0.7em;
+    font-size: 16px;
+    margin-bottom: 0.8em;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .auth-form {
+    width: inherit;
+    padding: 1.6em 1.2em;
+    margin: 0 0.3em;
+  }
 }

@@ -52,7 +52,7 @@ export default function IndexPage() {
   const places = [...response.locations];
 
   const [open, setOpen] = useState(false);
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   return (
     <div className="">

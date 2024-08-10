@@ -1,28 +1,24 @@
-import React from 'react';
-import axios from 'axios';
-import { Form, useActionData, redirect, Link } from 'react-router-dom';
-import { Alert } from '@mui/material';
-import './Auth.css';
+import React from "react";
+import axios from "axios";
+import { Form, useActionData, redirect, Link } from "react-router-dom";
+import { Alert } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import "./Auth.css";
 
 export default function Register() {
   const actionData = useActionData();
+  console.log(actionData)
 
   return (
     <div className="auth-container">
       <Form method="post" action="/register" className="auth-form">
+        <Link to="/" className="back-to-home">
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </Link>
         <h2>Register</h2>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          required
-        />
+        <input type="text" name="username" placeholder="Username" required />
+        <input type="email" name="email" placeholder="Email" required />
         <input
           type="password"
           name="password"
@@ -30,7 +26,11 @@ export default function Register() {
           required
         />
         <button type="submit">Register</button>
-        {actionData?.error && <p className="error"><Alert severity="error">{actionData.error}</Alert></p>}
+        {actionData?.error && (
+          <p className="error">
+            <Alert severity="error">{actionData.error}</Alert>
+          </p>
+        )}
         <p>
           Already have an account? <Link to="/login">Login here</Link>
         </p>
@@ -44,10 +44,11 @@ export async function action({ request }) {
   const data = Object.fromEntries(formData);
 
   try {
-    await axios.post('/api/register', data, { withCredentials: true });
-    console.log('Registered successfully');
-    return redirect('/');
+    await axios.post("/api/register", data, { withCredentials: true });
+    console.log("Registered successfully");
+    return redirect("/");
   } catch (error) {
-    return { error: error.response?.data?.message || 'Registration failed' };
+    console.log(error)
+    return { error: error.response.data.error || "Registration failed" };
   }
 }

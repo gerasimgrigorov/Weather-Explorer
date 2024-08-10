@@ -9,16 +9,19 @@ export default function SearchInput({ places, setOpen }) {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const [value, setValue] = React.useState(null);
-  
-  let topLocations = places.map((place) =>
-    ({ title: place.address, timeZone: place.timezone })
-  );
+
+  let topLocations = places.map((place) => ({
+    title: place.address,
+    timeZone: place.timezone,
+  }));
 
   async function fetchWeather(location) {
     try {
       navigate(`/search?q=${encodeURIComponent(location)}`);
     } catch (e) {
-      throw new Error("An error occured while trying to navigate to the search result.");
+      throw new Error(
+        "An error occured while trying to navigate to the search result."
+      );
     }
   }
 
@@ -102,12 +105,12 @@ export default function SearchInput({ places, setOpen }) {
                 borderColor: "rgba(246, 246, 246, 0.5)", // 50% transparent border color
                 borderWidth: "2px", // 2px border width
                 borderRadius: "10px",
-                transition: "0.5s ease"
+                transition: "0.5s ease",
               },
               "&:hover fieldset": {
                 borderColor: "rgba(246, 246, 246, 0.7)", // Border color on hover
                 borderWidth: "2px", // Border width on hover
-                transition: "0.5s ease"
+                transition: "0.5s ease",
               },
               "&.Mui-focused fieldset": {
                 borderColor: "rgba(246, 246, 246, 0.7)", // Border color when focused
@@ -121,7 +124,7 @@ export default function SearchInput({ places, setOpen }) {
               color: "rgba(246, 246, 246, 0.3)", // White label color
             },
             "& .MuiFormLabel-root.Mui-focused": {
-              color: "rgba(246, 246, 246, 0.7)", // White label color when focused
+              color: "rgba(246, 246, 246, 0.9)", // White label color when focused
             },
           }}
         />

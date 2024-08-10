@@ -13,7 +13,7 @@ export default function Footer() {
     <Box
       sx={{
         bgcolor: "rgba(235, 235, 235, 0.6)",
-        padding: 1,
+        padding: 0.7,
         borderTop: "1px solid",
         borderColor: "divider",
       }}
@@ -83,12 +83,12 @@ export default function Footer() {
             sx={{
               width: "35%",
               ml: "auto",
-              display: { xs: "none", md: "flex" },
+              display: { xs: "none", md: "flex", height: "1em" },
             }}
           />
         </Box>
-        <Divider sx={{ my: 1 }} />
-        <Typography level="body2" textAlign="center" sx={{ fontWeight: 600 }}>
+        <Divider sx={{ my: 0.7 }} />
+        <Typography level="body2" textAlign="center" sx={{ fontWeight: 600, height: "auto", fontSize: "14px" }}>
           &copy; 2024 | Designed by Gerasim
         </Typography>
       </Box>

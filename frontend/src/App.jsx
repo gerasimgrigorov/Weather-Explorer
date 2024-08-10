@@ -23,17 +23,17 @@ const router = createBrowserRouter([
         element: <SingleWeatherPage />,
         loader: singleWeatherLoader,
       },
-      {
-        path: "register",
-        element: <RegisterPage />,
-        action: registerAction,
-      },
-      {
-        path: "login",
-        element: <LoginPage />,
-        action: loginAction,
-      },
     ],
+  },
+  {
+    path: "register",
+    element: <RegisterPage />,
+    action: registerAction,
+  },
+  {
+    path: "login",
+    element: <LoginPage />,
+    action: loginAction,
   },
 ]);
 

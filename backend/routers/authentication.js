@@ -4,13 +4,31 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const pool = require("../db");
 
+const { isValidEmail, isValidPassword, isValidUsername } = require("../utils/validation")
+
 router.post("/register", async (req, res) => {
   const { username, email, password } = req.body;
 
-  console.log("Received data:", { username, email, password });  // Log received data
+  console.log("Data:", { username, email, password });
 
+  // Validate inputs
   if (!username || !email || !password) {
     return res.status(400).json({ error: "All fields are required." });
+  }
+
+  if (!isValidEmail(email)) {
+    console.log("SMALL EMAIL")
+    return res.status(400).json({ error: "Invalid email format." });
+  }
+
+  if (!isValidUsername(username)) {
+    console.log("SMALL USERNAME")
+    return res.status(400).json({ error: "Username must be at least 3 characters long." });
+  }
+
+  if (!isValidPassword(password)) {
+    console.log("SMALL PASSWORD")
+    return res.status(400).json({ error: "Password must be at least 8 characters long." });
   }
 
   try {
@@ -24,13 +42,13 @@ router.post("/register", async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log("Hashed password:", hashedPassword);  // Log hashed password
+    console.log("Hashed password:", hashedPassword);
 
     const newUser = await pool.query(
       "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *",
       [username, email, hashedPassword]
     );
-    console.log("New user added:", newUser.rows[0]);  // Log new user data
+    console.log("New user added:", newUser.rows[0]); 
 
     return res.status(201).json(newUser.rows[0]);
   } catch (error) {
@@ -38,6 +56,7 @@ router.post("/register", async (req, res) => {
     return res.status(500).json({ error: "Registration failed", details: error.message });
   }
 });
+
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
@@ -64,7 +83,7 @@ router.post("/login", async (req, res) => {
       expiresIn: "1h",
     });
     res.cookie("token", token);
-    res.json({ message: "Successfully logged in." });
+    res.json({ message: "Successfully logged in.", user: user.rows[0] });
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
@@ -81,7 +100,6 @@ router.get("/check", (req, res) => {
     return res.status(401).json({ user: null });
   }
   try {
-    console.log(token)
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     pool.query("SELECT * FROM users WHERE id = $1", [decoded.id], (error, results) => {
       if (error || results.rows.length === 0) {

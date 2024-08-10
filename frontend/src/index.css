@@ -54,12 +54,45 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Remove focus outline from all buttons, icons, and icon buttons */
+button, .MuiIconButton-root, .MuiSvgIcon-root {
+  outline: none;
+  border: none;
+}
+
+/* If you want to specifically target only the icons and icon buttons */
+.MuiIconButton-root {
+  border: none;
+  outline: none;
+  box-shadow: none;  /* Remove any box-shadow */
+}
+
+.MuiIconButton-root:hover, 
+.MuiIconButton-root:focus {
+  outline: none;
+  border: none;
+}
+
+/* You can also remove any focus styles on SVG icons */
+.MuiSvgIcon-root {
+  outline: none;
+  border: none;
+}
+
+/* If you need to reset the border for icons inside buttons specifically */
+button .MuiSvgIcon-root {
+  outline: none;
+  border: none;
 }
 
 @media (prefers-color-scheme: light) {

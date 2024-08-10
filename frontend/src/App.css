@@ -4,7 +4,7 @@
   text-align: center;
 }
 
-#main-root-section{
+#main-root-section {
   width: 65%;
   margin: 0 auto;
   text-align: center;
@@ -12,11 +12,10 @@
   min-height: 100vh;
 }
 
-
 .search-input {
   border-radius: 6px;
   margin: 0 auto;
-  width: 60%;
+  width: 50%;
 }
 
 .search-input:hover {
@@ -27,7 +26,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 1em; 
+  gap: 1em;
   padding: 1em;
 }
 
@@ -41,9 +40,9 @@
   justify-content: space-between;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  width: 100%; 
+  width: 100%;
   max-width: 420px;
-  height: 110px; 
+  height: 110px;
   transition: 0.5s ease;
 }
 
@@ -54,7 +53,7 @@
 }
 
 .weather-icon-main-page {
-  font-size: 74px; 
+  font-size: 74px;
   margin-right: 0.38em;
 }
 
@@ -82,13 +81,12 @@
 }
 
 .see-more-btn:disabled {
-  background-color: #007bff7a; 
+  background-color: #007bff7a;
 }
 
 .see-more-btn:hover {
   background-color: #0056b3;
 }
-
 
 /* more weather info */
 
@@ -126,7 +124,7 @@
 
 /* map styles  */
 
-.map-widget{
+.map-widget {
   background-color: rgba(235, 235, 235, 0.95);
   border-radius: 12px;
   padding: 0 1em 1em 1em;
@@ -137,13 +135,17 @@
   margin: 0.8em 0;
 }
 
-
 /* map styles end  */
 
 .day-weather-icon {
   font-size: 52px;
   text-shadow: 2px 2px 2px rgba(black, 0.9);
   color: yellow;
+}
+
+.temperature-container {
+  display: flex;
+  align-items: "center";
 }
 
 .celsius {
@@ -154,6 +156,35 @@
 .fahrenheit {
   font-size: 34px;
   font-weight: 500;
+}
+
+.add-to-fav {
+  font-size: 30px;
+  margin-left: 10px; /* Add some spacing between the Fahrenheit and the star */
+}
+
+.fav-icon {
+  transition: transform 1s ease, color 1s ease;
+}
+
+.fav-icon:hover {
+  transform: scale(1.2);
+}
+
+.add-to-fav .fav-icon {
+  animation: pop 0.3s ease;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .align-start {
@@ -255,7 +286,7 @@
     width: 80%;
   }
 
-  .location-card{
+  .location-card {
     max-width: 350px;
   }
 }
@@ -300,7 +331,7 @@
     margin: 0;
   }
 
-  .weather-icon-partially-cloudy{
+  .weather-icon-partially-cloudy {
     font-size: 60px !important;
   }
 
@@ -309,7 +340,7 @@
     margin-right: 0.2em;
   }
 
-  .weather-button-more{
+  .weather-button-more {
     max-width: 70px;
   }
 }
