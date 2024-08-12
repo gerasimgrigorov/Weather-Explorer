@@ -22,18 +22,24 @@ const pages = [
   { name: "Europe", path: "/europe" },
   { name: "UK", path: "/uk" },
 ];
-const settings = ["Profile", "Favourite", "Logout"];
+const settings = [
+  { name: "Profile", path: "/user" },
+  { name: "Favourite", path: "/favorite" },
+  { name: "Logout", path: "/" },
+];
 
 function NavBar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
-  const {user, setUser} = useUser()
+  const { user, setUser } = useUser();
   const navigate = useNavigate();
 
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("/api/check", { withCredentials: true }); 
+        const response = await axios.get("/api/check", {
+          withCredentials: true,
+        });
         setUser(response.data.user);
       } catch (error) {
         console.error("Not authenticated");
@@ -66,6 +72,15 @@ function NavBar() {
       navigate("/");
     } catch (error) {
       console.error("Logout failed");
+    }
+  };
+
+  const handleUserMenuClick = (setting) => {
+    handleCloseUserMenu();
+    if (setting.name === "Logout") {
+      handleLogout();
+    } else {
+      navigate(setting.path);
     }
   };
 
@@ -198,7 +213,10 @@ function NavBar() {
               <>
                 <Tooltip title="Open menu">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt={user.username.toUpperCase()} src="/broken-image.jpg" />
+                    <Avatar
+                      alt={user.username.toUpperCase()}
+                      src="/broken-image.jpg"
+                    />
                   </IconButton>
                 </Tooltip>
                 <Menu
@@ -220,14 +238,14 @@ function NavBar() {
                 >
                   {settings.map((setting) => (
                     <MenuItem
-                      key={setting}
-                      onClick={setting === "Logout" ? handleLogout : handleCloseUserMenu}
+                      key={setting.name}
+                      onClick={() => handleUserMenuClick(setting)}
                     >
                       <Typography
                         textAlign="center"
                         sx={{ fontFamily: "Poppins, sans-serif" }}
                       >
-                        {setting}
+                        {setting.name}
                       </Typography>
                     </MenuItem>
                   ))}
