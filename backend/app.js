@@ -6,6 +6,7 @@ const cors = require("cors");
 dotenv.config();
 
 const authenticationRouter = require("./routers/authentication")
+const userRouter = require("./routers/user")
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +19,7 @@ app.use(cors({
 }));
 
 app.use("/api", authenticationRouter)
+app.use("/api/user/", userRouter)
 
 app.listen(PORT, () => {
   console.log(`Listening to port ${PORT}`);

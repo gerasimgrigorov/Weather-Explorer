@@ -8,7 +8,7 @@ import ErrorPage from "./pages/Error";
 import RegisterPage, { action as registerAction } from "./pages/Register";
 import LoginPage, { action as loginAction } from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
-import UserInfoPage from "./pages/UserInfo";
+import UserInfoPage, { action as userInfoAction } from "./pages/UserInfo";
 import "./App.css";
 
 const router = createBrowserRouter([
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
       {
         path: "user",
         element: <ProtectedRoute />,
-        children: [{ index: true, element: <UserInfoPage /> }],
+        children: [{ index: true, element: <UserInfoPage />, action: userInfoAction }],
       },
     ],
   },

@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { Form, useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserProvider";
 import Modal from "../components/Modal";
+import axios from "axios";
 
 export default function UserInfo({ onSubmit }) {
   const { user } = useUser();
@@ -12,19 +13,14 @@ export default function UserInfo({ onSubmit }) {
   // const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit({ username, email });
-  };
-
   const handleCancel = () => {
-    navigate("../"); 
+    navigate("../");
   };
 
   return (
     <Modal onClose={handleCancel}>
       <h3>User Deatils:</h3>
-      <Form onSubmit={handleSubmit} className="user-info-form">
+      <Form method="post" action="/user"  className="user-info-form">
         <TextField
           label="Username"
           fullWidth
@@ -52,19 +48,32 @@ export default function UserInfo({ onSubmit }) {
           variant="outlined"
         /> */}
         <div className="form-actions">
-          <Button
+          <button
             onClick={handleCancel}
-            color="secondary"
-            variant="outlined"
             style={{ marginRight: "8px" }}
           >
             Cancel
-          </Button>
-          <Button type="submit" variant="contained" color="primary">
+          </button>
+          <button type="submit">
             Update Info
-          </Button>
+          </button>
         </div>
       </Form>
     </Modal>
   );
+}
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const data = Object.entries(formData);
+
+  try {
+    const result = await axios.post("/api/user/update", data, {
+      withCredentials: true,
+    });
+    console.log(result);
+  } catch (e) {
+    console.log(e)
+    return { error: error.response.data.error || "Something went wrong." };
+  }
 }
