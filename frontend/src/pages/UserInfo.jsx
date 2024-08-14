@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import { Form, useNavigate } from "react-router-dom";
+import { Alert } from "@mui/material";
+import { Form, useActionData, useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserProvider";
+import { redirect } from "react-router-dom";
 import Modal from "../components/Modal";
 import axios from "axios";
 
@@ -10,7 +10,8 @@ export default function UserInfo({ onSubmit }) {
   const { user } = useUser();
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
-  // const [password, setPassword] = useState("");
+
+  const actionData = useActionData()
   const navigate = useNavigate();
 
   const handleCancel = () => {
@@ -20,43 +21,38 @@ export default function UserInfo({ onSubmit }) {
   return (
     <Modal onClose={handleCancel}>
       <h3>User Deatils:</h3>
-      <Form method="post" action="/user"  className="user-info-form">
-        <TextField
-          label="Username"
-          fullWidth
+      <Form method="post" className="user-info-form">
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          margin="normal"
-          variant="outlined"
         />
-        <TextField
-          label="Email"
+        <input
           type="email"
-          fullWidth
+          name="email"
+          placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          margin="normal"
-          variant="outlined"
         />
-        {/* <TextField
-          label="Password"
+        {/* <input
+          placeholder="Password"
           type="password"
-          fullWidth
+          name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          margin="normal"
-          variant="outlined"
         /> */}
+        {actionData?.error && (
+          <p className="error" style={{margin: "0", marginBottom: "0.7em"}}>
+            <Alert severity="error">{actionData.error}</Alert>
+          </p>
+        )}
         <div className="form-actions">
-          <button
-            onClick={handleCancel}
-            style={{ marginRight: "8px" }}
-          >
+          <button onClick={handleCancel} style={{ marginRight: "8px" }}>
             Cancel
           </button>
-          <button type="submit">
-            Update Info
-          </button>
+          <button type="submit">Update Info</button>
         </div>
       </Form>
     </Modal>
@@ -65,15 +61,14 @@ export default function UserInfo({ onSubmit }) {
 
 export async function action({ request }) {
   const formData = await request.formData();
-  const data = Object.entries(formData);
+  const data = Object.fromEntries(formData);
 
   try {
     const result = await axios.post("/api/user/update", data, {
       withCredentials: true,
     });
-    console.log(result);
+    return redirect("/");
   } catch (e) {
-    console.log(e)
-    return { error: error.response.data.error || "Something went wrong." };
+    return { error: e.response.data.error || "Something went wrong." };
   }
 }

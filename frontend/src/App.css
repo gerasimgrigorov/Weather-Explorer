@@ -287,7 +287,7 @@
   margin: 0;
   padding: 1.8em;
   position: fixed;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30rem;
@@ -300,12 +300,23 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  animation: slide-down-fade-in 300ms ease-out forwards;
+  animation: subtle-drop 150ms ease-out forwards;
 }
 
-.modal h3{
+.modal h3 {
   margin: 0 !important;
-  margin-bottom: 0.1em !important;
+  margin-bottom: 0.55em !important;
+}
+
+@keyframes subtle-drop {
+  0% {
+    opacity: 0;
+    top: 40%;
+  }
+  100% {
+    opacity: 1;
+    top: 45%;
+  }
 }
 
 .modal::backdrop {
@@ -317,36 +328,36 @@
   left: 0;
 }
 
-/* close modal  */
+/* modal end  */
 
-/* form user deatil  */
-
+/* user info */
 .user-info-form {
   display: flex;
   flex-direction: column;
   align-items: stretch;
 }
 
+.user-info-form input {
+  width: 100%;
+  padding: 0.8em 0.7em;
+  box-sizing: border-box;
+  font-size: 16px;
+  margin-bottom: 0.7em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: "Poppins", sans-serif;
+}
+
 .user-info-form .form-actions {
   display: flex;
   justify-content: flex-end;
-  /* margin-top: 1em; */
-}
-
-.css-17vbkzs-MuiFormControl-root-MuiTextField-root{
-  margin: 0.6em 0 !important;
 }
 
 .user-info-form .form-actions button {
   min-width: 100px;
 }
 
-.user-info-form .MuiTextField-root {
-  margin-bottom: 16px;
-}
-
-
-/* form user detail end  */
+/* user info end  */
 
 @media screen and (max-width: 1200px) {
   #main-root-section {
