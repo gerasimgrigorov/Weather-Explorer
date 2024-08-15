@@ -21,9 +21,9 @@ export default function Map({ latitude, longitude }) {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       <Marker position={[latitude, longitude]}>
-        <Popup>
+        {/* <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
+        </Popup> */}
       </Marker>
     </MapContainer>
   );

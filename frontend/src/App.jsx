@@ -1,9 +1,9 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./pages/RootLayout";
 import IndexPage, { loader as placesLoader } from "./pages/Index";
-import SingleWeatherPage, {
-  loader as singleWeatherLoader,
-} from "./pages/SingleWeather";
+import EuropePage, { loader as europeLoader } from "./pages/Europe";
+import UKPage, { loader as ukLoader } from "./pages/UK";
+import SingleWeatherPage, { loader as singleWeatherLoader } from "./pages/SingleWeather";
 import ErrorPage from "./pages/Error";
 import RegisterPage, { action as registerAction } from "./pages/Register";
 import LoginPage, { action as loginAction } from "./pages/Login";
@@ -26,6 +26,16 @@ const router = createBrowserRouter([
         path: "search",
         element: <SingleWeatherPage />,
         loader: singleWeatherLoader,
+      },
+      {
+        path: "europe",
+        element: <EuropePage />,
+        loader: europeLoader,
+      },
+      {
+        path: "uk",
+        element: <UKPage />,
+        loader: ukLoader,
       },
       {
         path: "user",

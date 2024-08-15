@@ -41,7 +41,6 @@ router.post("/update", async (req, res) => {
 
     res.json({ message: "Updated the user successfully." });
   } catch (e) {
-    console.log(e);
     res
       .status(500)
       .json({ error: "An error occurred while updating the user." });
