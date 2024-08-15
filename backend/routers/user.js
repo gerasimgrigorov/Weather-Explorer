@@ -2,10 +2,11 @@ const express = require("express");
 const router = express.Router();
 const pool = require("../db");
 const { route } = require("./authentication");
-const { isValidEmail, isValidUsername } = require("../utils/validation")
+const { isValidEmail, isValidUsername } = require("../utils/validation");
 
 router.post("/update", async (req, res) => {
   const { username, email } = req.body;
+  const userId = req.session.userId;
 
   // Validate email and username
   if (!isValidEmail(email)) {
@@ -15,7 +16,9 @@ router.post("/update", async (req, res) => {
 
   if (!isValidUsername(username)) {
     console.log("Invalid username");
-    return res.status(400).json({ error: "Username must be at least 3 characters long." });
+    return res
+      .status(400)
+      .json({ error: "Username must be at least 3 characters long." });
   }
 
   try {
@@ -25,22 +28,24 @@ router.post("/update", async (req, res) => {
       [username, email]
     );
 
-    // if (result.rows.length > 0) {
-    //   return res.status(400).json({ error: "Username or email already taken." });
-    // }
+    if (result.rows.length > 0) {
+      return res
+        .status(400)
+        .json({ error: "Username or email already taken." });
+    }
 
-    // Update the user's username and email
-    console.log(result.rows[0].id)
     await pool.query(
-      `UPDATE users SET username = $1, email = $2 WHERE id = ${result.rows[0].id}`,
+      "UPDATE users SET username = $1, email = $2 WHERE id = $3",
       [username, email, userId]
     );
 
     res.json({ message: "Updated the user successfully." });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ error: "An error occurred while updating the user." });
+    res
+      .status(500)
+      .json({ error: "An error occurred while updating the user." });
   }
 });
 
-module.exports = router
+module.exports = router;

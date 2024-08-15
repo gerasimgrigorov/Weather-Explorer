@@ -42,9 +42,10 @@ export default function Footer() {
             display: "flex",
             padding: "0 18px",
             alignItems: "center",
-            gap: 2,
+            gap: { xs: 3, md: 2 }, // More gap on small screens
+            justifyContent: { xs: "center", md: "flex-start" }, // Center icons on small screens
             "& .MuiIconButton-root": {
-              transition: "0.5s ease", 
+              transition: "0.5s ease",
               "&:hover": {
                 color: "primary.main",
               },
@@ -88,7 +89,11 @@ export default function Footer() {
           />
         </Box>
         <Divider sx={{ my: 0.7 }} />
-        <Typography level="body2" textAlign="center" sx={{ fontWeight: 600, height: "auto", fontSize: "14px" }}>
+        <Typography
+          level="body2"
+          textAlign="center"
+          sx={{ fontWeight: 600, height: "auto", fontSize: "14px" }}
+        >
           &copy; 2024 | Designed by Gerasim
         </Typography>
       </Box>

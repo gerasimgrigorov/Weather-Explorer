@@ -6,12 +6,12 @@ import { redirect } from "react-router-dom";
 import Modal from "../components/Modal";
 import axios from "axios";
 
-export default function UserInfo({ onSubmit }) {
-  const { user } = useUser();
+export default function UserInfo() {
+  const { user, setUser } = useUser();
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
 
-  const actionData = useActionData()
+  const actionData = useActionData();
   const navigate = useNavigate();
 
   const handleCancel = () => {
@@ -21,7 +21,11 @@ export default function UserInfo({ onSubmit }) {
   return (
     <Modal onClose={handleCancel}>
       <h3>User Deatils:</h3>
-      <Form method="post" className="user-info-form">
+      <Form
+        method="post"
+        className="user-info-form"
+        // onSubmit={() => setUser({ ...user, username, email })}
+      >
         <input
           type="text"
           name="username"
@@ -44,7 +48,7 @@ export default function UserInfo({ onSubmit }) {
           onChange={(e) => setPassword(e.target.value)}
         /> */}
         {actionData?.error && (
-          <p className="error" style={{margin: "0", marginBottom: "0.7em"}}>
+          <p className="error" style={{ margin: "0", marginBottom: "0.7em" }}>
             <Alert severity="error">{actionData.error}</Alert>
           </p>
         )}
