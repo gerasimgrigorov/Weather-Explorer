@@ -1,87 +1,83 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import { useLoaderData } from "react-router-dom";
 import WeatherWidget from "../components/WeatherWidget";
+import axios from "axios";
 import WeatherList from "../components/WeatherList";
-import CircularProgress from "@mui/material/CircularProgress";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-
-const CACHE_KEY = "europeWeatherData";
-const CACHE_EXP = 3600000;
-
-function isCacheValid(cachedData) {
-  if (!cachedData) return false;
-  const { timeCached } = cachedData;
-  const now = new Date().getTime();
-  return now - timeCached < CACHE_EXP;
-}
+import "./Europe&UK.css"; // Import the CSS file for styling
 
 export async function loader() {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
-  const cachedData = JSON.parse(localStorage.getItem(CACHE_KEY));
+  const cachedData = JSON.parse(localStorage.getItem("europeWeatherData"));
 
-  if (isCacheValid(cachedData)) {
+  const CACHE_EXP = 3600000;
+  const now = new Date().getTime();
+
+  if (cachedData && now - cachedData.timeCached < CACHE_EXP) {
     return cachedData.data;
   } else {
-    try {
-      const response = await axios.get(
-        `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&locations=Paris%2CFrance%7CBerlin%2CGermany%7CRome%2CItaly%7CMadrid%2CSpain`
-      );
-      const dataToCache = {
-        timeCached: new Date().getTime(),
-        data: response.data,
-      };
-      localStorage.setItem(CACHE_KEY, JSON.stringify(dataToCache));
-      return response.data;
-    } catch (e) {
-      console.error("Failed to fetch the weather data for Europe.", e);
-      throw new Error("Failed to fetch the weather data for Europe.");
-    }
+    const response = await axios.get(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&locations=Paris%2CFrance%7CBerlin%2CGermany%7CRome%2CItaly%7CMadrid%2CSpain`
+    );
+    const dataToCache = {
+      timeCached: new Date().getTime(),
+      data: response.data,
+    };
+    localStorage.setItem("europeWeatherData", JSON.stringify(dataToCache));
+    return response.data;
   }
 }
 
 export default function EuropePage() {
-  const [places, setPlaces] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const data = useLoaderData();
 
-  useEffect(() => {
-    loader()
-      .then((data) => setPlaces(data.locations))
-      .finally(() => setLoading(false));
-  }, []);
+  if (!data) {
+    return (
+      <div className="europe-page-widget">
+        <h2 className="europe-page__title">Weather in Europe</h2>
+        <p>Failed to load weather data. Please try again later.</p>
+      </div>
+    );
+  }
+
+  const places = [...data.locations];
 
   return (
-    <div className="europe-page">
-      <h2>Weather in Europe</h2>
-      {loading ? (
-        <CircularProgress color="secondary" />
-      ) : (
-        <>
-          <WeatherList>
-            {places &&
-              places.map((place) => (
-                <WeatherWidget key={place.latitude} location={place} />
-              ))}
-          </WeatherList>
-
-          <MapContainer center={[48.8566, 2.3522]} zoom={4} style={{ height: "500px", marginTop: "2em" }}>
+    <>
+      <div className="europe-page-widget">
+        <div className="europe-page">
+          <h2 className="europe-page__title">Weather in Europe</h2>
+          <MapContainer
+            center={[48.8566, 2.3522]}
+            zoom={4.5}
+            style={{ height: "500px", width: "100%", borderRadius: "8px" }}
+          >
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
             {places &&
               places.map((place) => (
-                <Marker key={place.latitude} position={[place.latitude, place.longitude]}>
+                <Marker
+                  key={place.latitude}
+                  position={[place.latitude, place.longitude]}
+                >
                   <Popup>
                     <div>
-                      <h3>{place.name}</h3>
-                      {/* <p>{place.currentConditions.temp}°C, {place.currentConditions.conditions}</p> */}
+                      <h3>{place.address}</h3>
                     </div>
                   </Popup>
                 </Marker>
               ))}
           </MapContainer>
-        </>
-      )}
-    </div>
+        </div>
+      </div>
+      <WeatherList>
+        {places &&
+          places.map((place) => (
+            <WeatherWidget key={place.latitude} location={place} />
+          ))}
+      </WeatherList>
+    </>
   );
 }

@@ -1,0 +1,63 @@
+.europe-page-widget {
+  background-color:rgba(235, 235, 235, 0.95); /* Light background color for the widget */
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 12px; /* Rounded corners for the whole widget */
+  padding: 20px;
+  margin: 0 20px; /* Center the widget on the page */
+  width: auto;
+}
+
+
+.europe-page__title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+.uk-page-widget, .europe-page-widget {
+  background-color: rgba(235, 235, 235, 0.95); /* Light background color for the widget */
+  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 12px; /* Rounded corners for the whole widget */
+  padding: 20px;
+  margin: 0 20px; /* Center the widget on the page */
+  width: auto;
+}
+
+.uk-page__title, .europe-page__title {
+  text-align: center;
+  font-size: 2rem;
+  margin: 0px 0 20px 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.uk-page-content, .europe-page-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.uk-page-content > * {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.uk-weather-list, .europe-weather-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50%;
+  height: 500px;
+  /* overflow-y: auto; */
+}
+
+.map-container {
+  width: 50%;
+  height: 500px;
+  margin-left: 20px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.uk-page-content > *:last-child {
+  margin-right: 0;
+}
