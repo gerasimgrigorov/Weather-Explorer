@@ -360,6 +360,18 @@
 
 /* user info end  */
 
+/* index welcoming */
+
+.sub-heading span{
+  background-color: rgb(235, 235, 235);
+  border-radius: 30px 100px / 120px;
+  padding: 6px 14px;;
+}
+
+.sub-heading{
+  color: rgba(235, 235, 235);
+}
+
 @media screen and (max-width: 1200px) {
   #main-root-section {
     width: 80%;

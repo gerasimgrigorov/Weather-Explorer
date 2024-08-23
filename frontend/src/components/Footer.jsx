@@ -5,6 +5,7 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ColorLensRoundedIcon from "@mui/icons-material/ColorLensRounded";
 import SendIcon from "@mui/icons-material/Send";
+import { color } from "@mui/system";
 
 export default function Footer() {
   const [isDarkTheme, SetIsDarkTheme] = React.useState(false);
@@ -12,10 +13,10 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        bgcolor: "rgba(235, 235, 235, 0.6)",
+        // bgcolor: "rgba(235, 235, 235, 0.6)",
         padding: 0.7,
-        borderTop: "1px solid",
-        borderColor: "divider",
+        // borderTop: "1px solid",
+        // borderColor: "divider",
       }}
     >
       <Box
@@ -54,21 +55,21 @@ export default function Footer() {
         >
           <IconButton
             variant="soft"
-            size="sm"
+            // size="sm"
             onClick={() => {
               SetIsDarkTheme((prevState) => !prevState);
             }}
           >
-            <ColorLensRoundedIcon fontSize="small" />
+            <ColorLensRoundedIcon />
           </IconButton>
-          <Divider orientation="vertical" />
-          <IconButton variant="plain">
+          {/* <Divider orientation="vertical" /> */}
+          <IconButton variant="soft">
             <FacebookRoundedIcon />
           </IconButton>
-          <IconButton variant="plain">
+          <IconButton variant="soft">
             <GitHubIcon />
           </IconButton>
-          <IconButton variant="plain">
+          <IconButton variant="soft">
             <InstagramIcon />
           </IconButton>
           <Input
@@ -88,11 +89,11 @@ export default function Footer() {
             }}
           />
         </Box>
-        <Divider sx={{ my: 0.7 }} />
+        {/* <Divider sx={{ my: 0.7 }} /> */}
         <Typography
           level="body2"
           textAlign="center"
-          sx={{ fontWeight: 600, height: "auto", fontSize: "14px" }}
+          sx={{ fontWeight: 600, height: "auto", fontSize: "14px", color: "white", margin: "10px 0 4.4px 0" }}
         >
           &copy; 2024 | Designed by Gerasim
         </Typography>

@@ -33,7 +33,7 @@ export async function loader() {
       const response = await axios.get(
         `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timelinemulti?key=${apiKey}&locations=New%20York%2CUSA%7CLondon%2CUK%7CTokyo%2CJapan%7CSydney%2CAustralia&locationNames=New%20York%7CLondon%7CTokyo%7CSydney`
       );
-      
+
       const dataToCache = {
         timeCached: new Date().getTime(),
         data: response.data,
@@ -41,7 +41,7 @@ export async function loader() {
       localStorage.setItem(CACHE_KEY, JSON.stringify(dataToCache));
       return response.data;
     } catch (e) {
-      console.log(e.message)
+      console.log(e.message);
       throw new Error("Failed to fetch the needed data.");
     }
   }
@@ -76,19 +76,20 @@ export default function IndexPage() {
         </Alert>
       </Collapse>
 
-      <h2 style={{ marginTop: "0.6em" }}>
-        Wellcome to{" "}
-        <span style={{ textDecoration: "underline" }}>weather4me.com</span>!
-      </h2>
-      <h3>
-        <em>Explore the weather around the word.</em>
+      {/* <h2 className="welcome-heading">
+        Welcome to <span className="highlight">weather4me.com</span>!
+      </h2> */}
+      <h3 className="sub-heading">
+        <span>
+          <em>Explore the weather around the globe.</em>
+        </span>
       </h3>
 
       <div className="search-input">
         <SearchInput places={places} />
       </div>
 
-      <h3>Popular destination around the world.</h3>
+      <h3 className="sub-heading">Popular destination around the world.</h3>
 
       {response ? (
         <WeatherList>

@@ -1,37 +1,22 @@
-.europe-page-widget {
+.uk-page-widget, .europe-page-widget {
   background-color:rgba(235, 235, 235, 0.95); /* Light background color for the widget */
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.4);
   border-radius: 12px; /* Rounded corners for the whole widget */
-  padding: 20px;
-  margin: 0 20px; /* Center the widget on the page */
+  padding: 10px 20px 20px 20px;
+  margin: 20px 24px; /* Center the widget on the page */
   width: auto;
 }
 
-
-.europe-page__title {
-  text-align: center;
-  font-size: 2rem;
-  margin: 0px;
-  font-family: "Poppins", sans-serif;
-}
-
-.uk-page-widget, .europe-page-widget {
-  background-color: rgba(235, 235, 235, 0.95); /* Light background color for the widget */
-  box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.4);
-  border-radius: 12px; /* Rounded corners for the whole widget */
-  padding: 20px;
-  margin: 0 20px; /* Center the widget on the page */
-  width: auto;
-}
 
 .uk-page__title, .europe-page__title {
   text-align: center;
-  font-size: 2rem;
-  margin: 0px 0 20px 0;
+  font-size: 1.8rem;
+  margin: 0;
+  margin-bottom: 10px;
   font-family: "Poppins", sans-serif;
 }
 
-.uk-page-content, .europe-page-content {
+.uk-page-content {
   display: flex;
   justify-content: space-between;
 }
@@ -60,4 +45,13 @@
 
 .uk-page-content > *:last-child {
   margin-right: 0;
+}
+
+.weather-list{
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.weather-info{
+  font-size: 12px !important;
 }

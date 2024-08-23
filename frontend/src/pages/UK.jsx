@@ -70,13 +70,15 @@ export default function UKPage() {
                 </Marker>
               ))}
           </MapContainer>
-          <WeatherList className="uk-weather-list">
-            {places &&
-              places.map((place) => (
-                <WeatherWidget key={place.latitude} location={place} />
-              ))}
-          </WeatherList>
         </div>
+      </div>
+      <div style={{ margin: "0 10px" }}>
+        <WeatherList>
+          {places &&
+            places.map((place) => (
+              <WeatherWidget key={place.latitude} location={place} />
+            ))}
+        </WeatherList>
       </div>
     </>
   );
