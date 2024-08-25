@@ -5,6 +5,7 @@ import axios from "axios";
 import WeatherList from "../components/WeatherList";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "./Europe&UK.css"; // Import the CSS file for styling
+import { formatLocation } from "../../utils/formulas";
 
 export async function loader() {
   const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
@@ -64,7 +65,7 @@ export default function UKPage() {
                 >
                   <Popup>
                     <div>
-                      <h3>{place.address}</h3>
+                      <a href={`/search?q=${encodeURIComponent(place.address)}`}><h3>{formatLocation(place.address)}</h3></a>
                     </div>
                   </Popup>
                 </Marker>

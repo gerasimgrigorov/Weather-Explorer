@@ -79,11 +79,11 @@ export default function IndexPage() {
       {/* <h2 className="welcome-heading">
         Welcome to <span className="highlight">weather4me.com</span>!
       </h2> */}
-      <h3 className="sub-heading">
-        <span>
+      <div className="sub-heading">
+        <h3>
           <em>Explore the weather around the globe.</em>
-        </span>
-      </h3>
+        </h3>
+      </div>
 
       <div className="search-input">
         <SearchInput places={places} />

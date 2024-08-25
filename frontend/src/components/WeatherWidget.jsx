@@ -5,7 +5,6 @@ import { formatLocation } from "../../utils/formulas";
 import "../App.css";
 
 export default function WeatherWidget({ location }) {
-  console.log(location)
   const { address, days } = location;
 
   const currTempCelsius = Math.round(toCelsius(days[0].temp).toFixed(1));

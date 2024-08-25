@@ -362,13 +362,19 @@
 
 /* index welcoming */
 
-.sub-heading span{
+
+
+.sub-heading h3{
+  display: inline;
   background-color: rgb(235, 235, 235);
   border-radius: 30px 100px / 120px;
-  padding: 6px 14px;;
+  padding: 6px 14px;
 }
 
+
 .sub-heading{
+  margin-top: 22.72px !important;
+  margin-bottom: 30.72px;
   color: rgba(235, 235, 235);
 }
 
@@ -439,5 +445,8 @@
 @media screen and (max-width: 468px) {
   .search-input {
     width: 92%;
+  }
+  .sub-heading h3{
+    font-size: 14px;
   }
 }

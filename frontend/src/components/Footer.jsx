@@ -1,11 +1,10 @@
 import React from "react";
-import { Box, Typography, Divider, IconButton, Input } from "@mui/joy";
+import { Box, Typography, IconButton, Input } from "@mui/joy";
 import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ColorLensRoundedIcon from "@mui/icons-material/ColorLensRounded";
 import SendIcon from "@mui/icons-material/Send";
-import { color } from "@mui/system";
 
 export default function Footer() {
   const [isDarkTheme, SetIsDarkTheme] = React.useState(false);
@@ -13,10 +12,7 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        // bgcolor: "rgba(235, 235, 235, 0.6)",
         padding: 0.7,
-        // borderTop: "1px solid",
-        // borderColor: "divider",
       }}
     >
       <Box
@@ -55,23 +51,29 @@ export default function Footer() {
         >
           <IconButton
             variant="soft"
-            // size="sm"
             onClick={() => {
               SetIsDarkTheme((prevState) => !prevState);
             }}
           >
             <ColorLensRoundedIcon />
           </IconButton>
-          {/* <Divider orientation="vertical" /> */}
-          <IconButton variant="soft">
-            <FacebookRoundedIcon />
-          </IconButton>
-          <IconButton variant="soft">
-            <GitHubIcon />
-          </IconButton>
-          <IconButton variant="soft">
-            <InstagramIcon />
-          </IconButton>
+
+          {/* <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+            <IconButton variant="soft">
+              <FacebookRoundedIcon />
+            </IconButton>
+          </a> */}
+          <a href="https://github.com/geroarmani" target="_blank" rel="noopener noreferrer">
+            <IconButton variant="soft">
+              <GitHubIcon />
+            </IconButton>
+          </a>
+          <a href="https://www.instagram.com/grigoroww_" target="_blank" rel="noopener noreferrer">
+            <IconButton variant="soft">
+              <InstagramIcon />
+            </IconButton>
+          </a>
+
           <Input
             variant="soft"
             placeholder="Type in your email"
@@ -89,7 +91,7 @@ export default function Footer() {
             }}
           />
         </Box>
-        {/* <Divider sx={{ my: 0.7 }} /> */}
+
         <Typography
           level="body2"
           textAlign="center"

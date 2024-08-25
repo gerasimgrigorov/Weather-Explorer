@@ -35,7 +35,8 @@ const sessionConfig = {
 app.use(session(sessionConfig));
 
 app.use(async (req, res, next) => {
-  console.log("Current session: ", req.session)
+  // console.log("Current session: ", req.session)
+  console.log("Current User ID: ", req.session.userId)
   // console.log("Available cookies: ", req.cookies)
   next()
 })
