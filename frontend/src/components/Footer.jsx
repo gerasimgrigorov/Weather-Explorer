@@ -97,7 +97,7 @@ export default function Footer() {
           textAlign="center"
           sx={{ fontWeight: 600, height: "auto", fontSize: "14px", color: "white", margin: "10px 0 4.4px 0" }}
         >
-          &copy; 2024 | Designed by Gerasim
+          &copy; 2024 Concept | Designed by Gerasim
         </Typography>
       </Box>
     </Box>

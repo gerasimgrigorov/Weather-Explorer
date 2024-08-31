@@ -3,12 +3,15 @@ import RootLayout from "./pages/RootLayout";
 import IndexPage, { loader as placesLoader } from "./pages/Index";
 import EuropePage, { loader as europeLoader } from "./pages/Europe";
 import UKPage, { loader as ukLoader } from "./pages/UK";
-import SingleWeatherPage, { loader as singleWeatherLoader } from "./pages/SingleWeather";
+import SingleWeatherPage, {
+  loader as singleWeatherLoader,
+} from "./pages/SingleWeather";
 import ErrorPage from "./pages/Error";
 import RegisterPage, { action as registerAction } from "./pages/Register";
 import LoginPage, { action as loginAction } from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import UserInfoPage, { action as userInfoAction } from "./pages/UserInfo";
+import FavoritesPage from "./pages/Favorites";
 import "./App.css";
 
 const router = createBrowserRouter([
@@ -40,7 +43,14 @@ const router = createBrowserRouter([
       {
         path: "user",
         element: <ProtectedRoute />,
-        children: [{ index: true, element: <UserInfoPage />, action: userInfoAction }],
+        children: [
+          { index: true, element: <UserInfoPage />, action: userInfoAction },
+        ],
+      },
+      {
+        path: "favorites",
+        element: <ProtectedRoute />,
+        children: [{ index: true, element: <FavoritesPage /> }],
       },
     ],
   },

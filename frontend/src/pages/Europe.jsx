@@ -49,8 +49,8 @@ export default function EuropePage() {
         <div className="europe-page">
           <h2 className="europe-page__title">Weather in Europe</h2>
           <MapContainer
-            center={[48.8566, 2.3522]}
-            zoom={4.5}
+            center={[46.8566, 9.3522]}
+            zoom={5}
             style={{ height: "500px", width: "100%", borderRadius: "8px" }}
           >
             <TileLayer

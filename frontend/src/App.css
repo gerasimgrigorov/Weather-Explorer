@@ -23,6 +23,7 @@
 }
 
 .weather-list {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -288,11 +289,11 @@
   margin: 0;
   padding: 1.8em;
   position: fixed;
-  top: 45%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30rem;
-  max-height: 80vh;
+  max-height: 60vh;
   background: #e2e5eb;
   border: none;
   border-radius: 6px;
@@ -378,13 +379,35 @@
   color: rgba(235, 235, 235);
 }
 
+/* favorite locations */
+.favorite-locations-list .favorite-locations-title{
+  margin: 0 0.5em 0.5em 0.5em  !important;
+}
+
+.favorite-locations-list .favorite-locations-close-button{
+  margin: 0.5em !important;
+  width: 100%;
+}
+
+.favorite-locations-list .weather-list {
+  justify-content: start !important;
+  gap: 0.1em;
+  margin-bottom: 0;
+}
+
+.favorite-locations-list .location-card{
+  max-width: 500px;
+}
+
+/* favorite locations end  */
+
 @media screen and (max-width: 1200px) {
   #main-root-section {
     width: 80%;
   }
 
   .location-card {
-    max-width: 350px;
+    max-width: 350x;
   }
 }
 
@@ -439,6 +462,15 @@
 
   .weather-button-more {
     max-width: 70px;
+  }
+
+  .favorite-locations-list .favorite-locations-title{
+    margin: 0 0 0.5em 0  !important;
+  }
+  
+  .favorite-locations-list .favorite-locations-close-button{
+    margin: 0 0 0.5em 0  !important;
+    width: 100%;
   }
 }
 

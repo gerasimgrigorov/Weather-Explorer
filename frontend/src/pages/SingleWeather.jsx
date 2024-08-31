@@ -1,6 +1,6 @@
 // src/pages/SingleWeatherPage.jsx
 import axios from "axios";
-import { useNavigate, useLoaderData } from "react-router-dom";
+import { useNavigate, useLoaderData, redirect } from "react-router-dom";
 import { toCelsius, getWeatherIcon } from "../../utils/formulas";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
@@ -42,7 +42,7 @@ export default function SingleWeatherPage() {
   const location = useLoaderData();
   const [isFavorited, setIsFavorited] = useState();
 
-  // console.log(location.latitude, location.longitude);
+  // console.log(location)
 
   useEffect(() => {
     async function checkFavorite() {
@@ -84,17 +84,18 @@ export default function SingleWeatherPage() {
   async function handleFavorite() {
     try {
       if (isFavorited) {
-        await axios.delete("http://localhost:3000/api/user/favorites", {
+        const result = await axios.delete("http://localhost:3000/api/user/favorites", {
           data: { latitude: location.latitude, longitude: location.longitude },
           withCredentials: true,
         });
         if ((result.status = 200)) {
-          setIsFavorited(true);
+          setIsFavorited(false);
+          redirect("/")
         }
       } else {
         const result = await axios.post(
           "http://localhost:3000/api/user/favorites",
-          { latitude: location.latitude, longitude: location.longitude },
+          { latitude: location.latitude, longitude: location.longitude, address: location.address },
           { withCredentials: true }
         );
 
@@ -104,6 +105,7 @@ export default function SingleWeatherPage() {
       }
     } catch (e) {
       if (e.response && e.response.status === 401) {
+        console.log(e.response)
         navigate("/login");
       } else {
         console.log("Failed to add: ", e);

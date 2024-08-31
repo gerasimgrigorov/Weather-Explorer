@@ -50,7 +50,7 @@ export default function UKPage() {
         <div className="uk-page-content">
           <MapContainer
             center={[53.483959, -2.244644]}
-            zoom={5}
+            zoom={5.5}
             style={{ height: "500px", width: "100%", borderRadius: "8px" }}
           >
             <TileLayer

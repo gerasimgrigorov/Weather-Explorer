@@ -46,31 +46,52 @@ router.post("/update", async (req, res) => {
   }
 });
 
+router.get("/favorites", async (req, res) => {
+  const userId = req.session.userId;
+
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized, please log in." });
+  }
+
+  try {
+    const result = await pool.query(
+      "SELECT latitude, longitude, address FROM favorite_locations WHERE user_id = $1",
+      [userId]
+    );
+
+    res.status(200).json(result.rows);
+  } catch (error) {
+    console.error("Error fetching favorite locations:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
 router.get("/favorites/check", async (req, res) => {
   const { latitude, longitude } = req.query;
   const userId = req.session.userId;
 
-  console.log("From check: ", latitude, longitude)
-  
+  console.log("From check: ", latitude, longitude);
+
   try {
     const query = await pool.query(
       "SELECT * FROM favorite_locations WHERE user_id = $1 AND latitude = $2 AND longitude = $3",
       [userId, latitude, longitude]
-    )
+    );
 
-    if(query.rows.length > 0){
-      res.json({isFavorited: true })
+    if (query.rows.length > 0) {
+      res.json({ isFavorited: true });
     } else {
-      res.json({isFavorited: false})
+      res.json({ isFavorited: false });
     }
   } catch (e) {
-    console.log("Error checking favorite status: ", e)
-    res.status(500).json({ message: "Initial server error"})
+    console.log("Error checking favorite status: ", e);
+    res.status(500).json({ message: "Initial server error" });
   }
-})
+});
 
 router.post("/favorites", async (req, res) => {
-  const { latitude, longitude } = req.body;
+  const { latitude, longitude, address } = req.body;
   const userId = req.session.userId;
 
   // console.log("Current user id: ", userId)
@@ -78,23 +99,24 @@ router.post("/favorites", async (req, res) => {
   if (!userId) {
     res.status(401).json({ message: "Unauthorized, please log in." });
   }
-  
+
   try {
     const query = await pool.query(
-      "INSERT INTO favorite_locations (user_id, latitude, longitude) VALUES ($1, $2, $3)",
-      [userId, latitude, longitude]
+      "INSERT INTO favorite_locations (user_id, latitude, longitude, address) VALUES ($1, $2, $3, $4)",
+      [userId, latitude, longitude, address]
     );
     res.status(200).json({ message: "Location added to favorites." });
   } catch (e) {
     console.log("Error adding the location", e);
     res.status(500).json({ message: "Failed to adding the location." });
   }
-
 });
 
 router.delete("/favorites", async (req, res) => {
-  const { latitude, longitude } = req.query;
+  const { latitude, longitude } = req.body;
   const userId = req.session.userId;
+
+  console.log("Deleted location info: ", latitude, longitude)
 
   if (!userId) {
     return res.status(401).json({ message: "Unauthorized, please log in." });

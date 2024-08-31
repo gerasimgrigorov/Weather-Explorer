@@ -4,7 +4,6 @@ import { useUser } from "../context/UserProvider";
 
 const ProtectedRoute = () => {
   const { user } = useUser();
-  console.log(user)
 
   return user ? <Outlet /> : <Navigate to="/" />;
 };

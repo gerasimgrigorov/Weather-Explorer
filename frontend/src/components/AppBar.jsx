@@ -24,7 +24,7 @@ const pages = [
 ];
 const settings = [
   { name: "Profile", path: "/user" },
-  { name: "Favourite", path: "/favorite" },
+  { name: "Favourite", path: "/favorites" },
   { name: "Logout", path: "/" },
 ];
 
@@ -40,6 +40,7 @@ function NavBar() {
         const response = await axios.get("/api/check", {
           withCredentials: true,
         });
+        console.log("Reponse for auth check: ", response)
         setUser(response.data.user);
       } catch (error) {
         console.error("Not authenticated");

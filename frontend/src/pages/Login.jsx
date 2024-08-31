@@ -39,14 +39,12 @@ export default function Login() {
 
 export async function action({ request }) {
   const formData = await request.formData();
-  // const {setUser} = useUser()
   const data = Object.fromEntries(formData);
 
   try {
     const result = await axios.post("/api/login", data, {
       withCredentials: true,
     });
-    // setUser(result.data.user)
     console.log("Logged in successfully");
     return redirect("/");
   } catch (error) {

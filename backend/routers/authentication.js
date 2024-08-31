@@ -87,10 +87,18 @@ router.post("/login", async (req, res) => {
   }
 });
 
-
 router.post("/logout", (req, res) => {
   res.clearCookie("token");
-  res.json({ message: "Successfully logged out." });
+  if (req.session) {
+    req.session.destroy((err) => {
+      if (err) {
+        return res.status(500).json({ message: "Logout failed" });
+      }
+      return res.json({ message: "Successfully logged out." });
+    });
+  } else {
+    res.json({ message: "Successfully logged out." });
+  }
 });
 
 router.get("/check", (req, res) => {
