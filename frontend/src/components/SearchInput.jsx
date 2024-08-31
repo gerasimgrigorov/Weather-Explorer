@@ -51,7 +51,6 @@ export default function SearchInput({ places, setOpen }) {
         const filtered = filter(options, params);
 
         const { inputValue } = params;
-        // Suggest the creation of a new value
         const isExisting = options.some(
           (option) => inputValue === option.title
         );
@@ -102,40 +101,33 @@ export default function SearchInput({ places, setOpen }) {
           sx={{
             "& .MuiOutlinedInput-root": {
               "& fieldset": {
-                borderColor: "rgba(235, 235, 235, 0.6)", // 50% transparent border color
-                borderWidth: "2px", // 2px border width
+                borderColor: "rgba(235, 235, 235, 0.6)",
+                borderWidth: "2px",
                 borderRadius: "10px",
                 transition: "0.5s ease",
               },
               "&:hover fieldset": {
-                borderColor: "rgba(235, 235, 235, 0.8)", // Border color on hover
-                borderWidth: "2px", // Border width on hover
+                borderColor: "rgba(235, 235, 235, 0.8)", 
+                borderWidth: "2px",
                 transition: "0.5s ease",
               },
               "&.Mui-focused fieldset": {
-                borderColor: "rgba(235, 235, 235, 0.8)", // Border color when focused
-                borderWidth: "2px", // Border width when focused
+                borderColor: "rgba(235, 235, 235, 0.8)",
+                borderWidth: "2px", 
               },
             },
             "& .MuiInputBase-input": {
-              color: "white", // White text color
+              color: "white",
             },
             "& .MuiFormLabel-root": {
-              color: "rgba(235, 235, 235, 0.6)", // White label color
+              color: "rgba(235, 235, 235, 0.6)", 
             },
             "& .MuiFormLabel-root.Mui-focused": {
-              color: "rgba(235, 235, 235, 1)", // White label color when focused
+              color: "rgba(235, 235, 235, 1)",
             },
           }}
         />
       )}
     />
-
-    // sx={{
-    //   "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
-    //     {
-    //       borderColor: "black",
-    //     },
-    // }}
   );
 }

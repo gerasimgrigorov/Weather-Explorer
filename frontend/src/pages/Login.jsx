@@ -1,6 +1,12 @@
 import React from "react";
 import axios from "axios";
-import { Form, useActionData, redirect, Link } from "react-router-dom";
+import {
+  Form,
+  useActionData,
+  redirect,
+  Link,
+  useLocation,
+} from "react-router-dom";
 import { Alert } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +14,9 @@ import "./Auth.css";
 
 export default function Login() {
   const actionData = useActionData();
+  const location = useLocation(); // getting the error message for accessing an unauth route
+
+  const errorMessage = actionData?.error || location.state?.errorMessage;
 
   return (
     <div className="auth-container">
@@ -24,9 +33,9 @@ export default function Login() {
           required
         />
         <button type="submit">Login</button>
-        {actionData?.error && (
+        {errorMessage && (
           <p className="error">
-            <Alert severity="error">{actionData.error}</Alert>
+            <Alert severity="error">{errorMessage}</Alert>
           </p>
         )}
         <p>
@@ -48,7 +57,6 @@ export async function action({ request }) {
     console.log("Logged in successfully");
     return redirect("/");
   } catch (error) {
-    console.log(error)
     return { error: error.response.data.error || "Login failed" };
   }
 }

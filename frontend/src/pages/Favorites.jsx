@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserProvider";
 import Modal from "../components/Modal";
-import WeatherWidget from "../components/WeatherWidget"; // Assuming this component renders weather data
+import WeatherWidget from "../components/WeatherWidget";
 import WeatherList from "../components/WeatherList";
 
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;

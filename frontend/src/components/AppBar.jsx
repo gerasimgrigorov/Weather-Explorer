@@ -40,7 +40,7 @@ function NavBar() {
         const response = await axios.get("/api/check", {
           withCredentials: true,
         });
-        console.log("Reponse for auth check: ", response)
+        console.log("Reponse for auth check: ", response);
         setUser(response.data.user);
       } catch (error) {
         console.error("Not authenticated");

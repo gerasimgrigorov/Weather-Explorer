@@ -1,6 +1,5 @@
 import React from "react";
 import { Box, Typography, IconButton, Input } from "@mui/joy";
-import FacebookRoundedIcon from "@mui/icons-material/FacebookRounded";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ColorLensRoundedIcon from "@mui/icons-material/ColorLensRounded";
@@ -57,18 +56,20 @@ export default function Footer() {
           >
             <ColorLensRoundedIcon />
           </IconButton>
-
-          {/* <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
-            <IconButton variant="soft">
-              <FacebookRoundedIcon />
-            </IconButton>
-          </a> */}
-          <a href="https://github.com/geroarmani" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/geroarmani"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <IconButton variant="soft">
               <GitHubIcon />
             </IconButton>
           </a>
-          <a href="https://www.instagram.com/grigoroww_" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/grigoroww_"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <IconButton variant="soft">
               <InstagramIcon />
             </IconButton>
@@ -95,7 +96,13 @@ export default function Footer() {
         <Typography
           level="body2"
           textAlign="center"
-          sx={{ fontWeight: 600, height: "auto", fontSize: "14px", color: "white", margin: "10px 0 4.4px 0" }}
+          sx={{
+            fontWeight: 600,
+            height: "auto",
+            fontSize: "14px",
+            color: "white",
+            margin: "10px 0 4.4px 0",
+          }}
         >
           &copy; 2024 Concept | Designed by Gerasim
         </Typography>

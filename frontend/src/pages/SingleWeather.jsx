@@ -88,9 +88,8 @@ export default function SingleWeatherPage() {
           data: { latitude: location.latitude, longitude: location.longitude },
           withCredentials: true,
         });
-        if ((result.status = 200)) {
+        if (result.status === 200) {
           setIsFavorited(false);
-          redirect("/")
         }
       } else {
         const result = await axios.post(
@@ -99,14 +98,13 @@ export default function SingleWeatherPage() {
           { withCredentials: true }
         );
 
-        if ((result.status = 200)) {
+        if (result.status === 200) {
           setIsFavorited(true);
         }
       }
     } catch (e) {
       if (e.response && e.response.status === 401) {
-        console.log(e.response)
-        navigate("/login");
+        navigate("/login", { state: { errorMessage: e.response.data.message } }); // sending the error message to the login page
       } else {
         console.log("Failed to add: ", e);
       }
@@ -133,7 +131,7 @@ export default function SingleWeatherPage() {
               aria-label="add to fav"
               sx={{
                 padding: "2px",
-                color: isFavorited ? "#ffea00" : "#242424",
+                color: isFavorited ? "#ffea00" : "#0f1a22",
               }}
               onClick={handleFavorite}
             >

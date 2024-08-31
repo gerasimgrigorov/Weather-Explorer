@@ -1,9 +1,9 @@
 .uk-page-widget, .europe-page-widget {
-  background-color:rgba(235, 235, 235, 0.95); /* Light background color for the widget */
+  background-color:rgba(235, 235, 235, 0.95);
   box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.4);
-  border-radius: 12px; /* Rounded corners for the whole widget */
+  border-radius: 12px;
   padding: 10px 20px 20px 20px;
-  margin: 20px 24px; /* Center the widget on the page */
+  margin: 20px 24px;
   width: auto;
 }
 

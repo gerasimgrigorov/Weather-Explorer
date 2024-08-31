@@ -7,11 +7,8 @@ export default function Modal({ children, onClose }) {
   useEffect(() => {
     const modal = dialogRef.current;
 
-    // Get the width of the scrollbar
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
-    // Apply styles to prevent scrolling and maintain scrollbar visibility
-    document.body.style.overflow = 'hidden';
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth; // getting the width of the scrollbar
+    document.body.style.overflow = 'hidden'; // prevent scrolling and maintain scrollbar visibility
     document.body.style.paddingRight = `${scrollbarWidth}px`;
 
     if (modal) {
@@ -22,7 +19,6 @@ export default function Modal({ children, onClose }) {
       if (modal && modal.open) {
         modal.close();
       }
-      // Restore original styles
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     };

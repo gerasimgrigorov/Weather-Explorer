@@ -8,7 +8,7 @@ import "./Auth.css";
 
 export default function Register() {
   const actionData = useActionData();
-  console.log(actionData)
+  console.log(actionData);
 
   return (
     <div className="auth-container">
@@ -48,7 +48,7 @@ export async function action({ request }) {
     console.log("Registered successfully");
     return redirect("/");
   } catch (error) {
-    console.log(error)
+    console.log(error);
     return { error: error.response.data.error || "Registration failed" };
   }
 }

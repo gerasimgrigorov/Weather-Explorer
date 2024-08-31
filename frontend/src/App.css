@@ -40,7 +40,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); */
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   width: 100%;
   max-width: 420px;
@@ -49,7 +48,6 @@
 }
 
 .location-card:hover {
-  /* background-color: rgba(235, 235, 235, 0.9); */
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
   transform: scale(1.01);
 }
@@ -63,6 +61,7 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  text-align: center;
   justify-content: center;
   margin-right: 1em;
 }
@@ -93,7 +92,6 @@
 /* more weather info */
 
 .single-weather-main {
-  /* width: 100%; */
   padding: 0 24px;
   margin: 1em auto;
 }
@@ -104,11 +102,6 @@
   justify-content: center;
 }
 
-/* .single-weather-header {
-  display: flex;
-  align-items: center;
-} */
-
 .single-location-name {
   font-size: 42px;
   font-weight: 600;
@@ -117,7 +110,6 @@
 .widget-row {
   display: flex;
   flex-wrap: wrap;
-  /* margin-top: 20px; */
   gap: 20px;
   justify-content: space-between;
 }
@@ -162,7 +154,7 @@
 
 .add-to-fav {
   font-size: 30px;
-  margin-left: 10px; /* Add some spacing between the Fahrenheit and the star */
+  margin-left: 10px;
 }
 
 .fav-icon {
@@ -362,9 +354,6 @@
 /* user info end  */
 
 /* index welcoming */
-
-
-
 .sub-heading h3{
   display: inline;
   background-color: rgb(235, 235, 235);
@@ -441,10 +430,6 @@
     width: 85%;
     padding: 0 0.4em;
   }
-
-  /* .single-weather-main {
-    width: 95%;
-  } */
 
   .location-card {
     padding: 0.6em 0.7em;
