@@ -1,7 +1,3 @@
-# Weather Forecast App
-
-Welcome to the Weather Forecast App! This full-stack application provides detailed weather forecasts for any location, featuring a modern, responsive design and rich user interaction. Built with React and Express.js, it leverages the Visual Crossing Weather API and a PostgreSQL database to deliver accurate and reliable weather data.
-
 ## Features
 
 - **Current Weather**: Get up-to-date weather conditions for any location worldwide.
