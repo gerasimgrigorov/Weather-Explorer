@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-body{
+body {
   font-family: "Poppins", sans-serif;
   background-image: url("https://images.unsplash.com/photo-1616071906060-1f425a639465?q=80&w=2066&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   background-position: fixed;
 
   /* background: linear-gradient(0deg, rgba(178,77,236,1) 0%, rgba(224,17,199,1) 50%, rgba(255,27,185,1) 100%); */
   /* background: linear-gradient(0deg, rgba(212,51,194,1) 0%, rgba(182,92,237,0.9585084033613446) 50%, rgba(179,85,255,1) 100%); */
   /* background: linear-gradient(0deg, rgba(255,110,193,1) 0%, rgba(224,17,199,1) 42%, rgba(178,44,255,1) 100%); */
-  
+
   margin: 0;
   display: flex;
   min-width: 320px;
@@ -19,13 +19,19 @@ body{
 
 :root {
   line-height: 1.5;
-  font-style:normal;
+  font-style: normal;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1,h2,h3,h4,h5,p,span{
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span {
   color: #0f1a22;
 }
 
@@ -64,7 +70,9 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-button, .MuiIconButton-root, .MuiSvgIcon-root {
+button,
+.MuiIconButton-root,
+.MuiSvgIcon-root {
   outline: none;
   border: none;
 }
@@ -72,10 +80,10 @@ button, .MuiIconButton-root, .MuiSvgIcon-root {
 .MuiIconButton-root {
   border: none;
   outline: none;
-  box-shadow: none; 
+  box-shadow: none;
 }
 
-.MuiIconButton-root:hover, 
+.MuiIconButton-root:hover,
 .MuiIconButton-root:focus {
   outline: none;
   border: none;
@@ -91,6 +99,50 @@ button .MuiSvgIcon-root {
   border: none;
 }
 
+/* Resetting the default focus outline for buttons, links, and other interactive elements */
+button:focus,
+a:focus,
+.MuiButtonBase-root:focus,
+.MuiIconButton-root:focus {
+  outline: none; /* Removes the default focus outline */
+}
+
+/* Adding custom focus styles to maintain accessibility */
+button:focus-visible,
+a:focus-visible,
+.MuiButtonBase-root:focus-visible,
+.MuiIconButton-root:focus-visible {
+  outline: 2px solid #535bf2; /* Custom focus outline for accessibility */
+  outline-offset: 4px; /* Adds space between the outline and the element */
+  border-radius: 4px; /* Makes the focus outline smoother around rounded elements */
+}
+
+/* Alternatively, you can use a box-shadow for a more modern focus effect */
+button:focus-visible,
+a:focus-visible,
+.MuiButtonBase-root:focus-visible,
+.MuiIconButton-root:focus-visible {
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.5); /* Light blue shadow */
+}
+
+/* For dark mode (if you're implementing it) */
+@media (prefers-color-scheme: dark) {
+  button:focus-visible,
+  a:focus-visible,
+  .MuiButtonBase-root:focus-visible,
+  .MuiIconButton-root:focus-visible {
+    outline: 2px solid #ffffff; /* White focus outline for dark backgrounds */
+    outline-offset: 4px;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  .MuiButtonBase-root:focus-visible,
+  .MuiIconButton-root:focus-visible {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5); /* White shadow for focus in dark mode */
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -101,5 +153,14 @@ button .MuiSvgIcon-root {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .css-quc3dg-MuiTypography-root {
+    margin-right: 0 !important;
+  }
+  .css-1pz7awu-MuiButtonBase-root-MuiIconButton-root {
+    padding: 12px 28px 12px 12px !important;
   }
 }

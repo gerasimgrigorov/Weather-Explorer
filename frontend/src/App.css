@@ -279,9 +279,8 @@
 
 .modal {
   margin: 0;
-  padding: 1.8em;
+  /* padding: 1.8em; */
   position: fixed;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30rem;
@@ -289,7 +288,7 @@
   background: #e2e5eb;
   border: none;
   border-radius: 6px;
-  z-index: 100;
+  z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   display: flex;
   flex-direction: column;
@@ -398,6 +397,10 @@
   .location-card {
     max-width: 350x;
   }
+
+  .widget-row {
+    justify-content: center;
+  }
 }
 
 @media screen and (max-width: 992px) {
@@ -405,9 +408,6 @@
     width: 85%;
   }
 
-  .widget-row {
-    justify-content: center;
-  }
 }
 
 @media screen and (max-width: 768px) {
@@ -457,6 +457,19 @@
     margin: 0 0 0.5em 0  !important;
     width: 100%;
   }
+
+  .favorite-locations-list .location-card{
+    box-shadow: 0px 0px 16px 0.2px rgba(0, 0, 0, 0.3);
+    margin: 6px 0 !important;
+  }
+  .favorite-locations-list .location-card:hover {
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .modal{
+    max-height: 70vh;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 468px) {
@@ -465,5 +478,9 @@
   }
   .sub-heading h3{
     font-size: 14px;
+  }
+  .single-weather-main {
+    padding: 0 10px !important;
+    /* margin: 1em auto; */
   }
 }

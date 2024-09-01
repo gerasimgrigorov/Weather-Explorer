@@ -94,7 +94,7 @@ export default function SingleWeatherPage() {
       } else {
         const result = await axios.post(
           "http://localhost:3000/api/user/favorites",
-          { latitude: location.latitude, longitude: location.longitude, address: location.address },
+          { latitude: location.latitude, longitude: location.longitude, address: location.resolvedAddress }, //fix the address to its shorter and clean every time
           { withCredentials: true }
         );
 

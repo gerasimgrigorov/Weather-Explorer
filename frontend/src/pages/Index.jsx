@@ -91,15 +91,17 @@ export default function IndexPage() {
 
       <h3 className="sub-heading">Popular destination around the world.</h3>
 
-      {response ? (
-        <WeatherList>
-          {places.map((place) => (
-            <WeatherWidget key={place.latitude} location={place} />
-          ))}
-        </WeatherList>
-      ) : (
-        <CircularProgress color="secondary" />
-      )}
+      <div style={{ margin: "0 10px" }}>
+        {response ? (
+          <WeatherList>
+            {places.map((place) => (
+              <WeatherWidget key={place.latitude} location={place} />
+            ))}
+          </WeatherList>
+        ) : (
+          <CircularProgress color="secondary" />
+        )}
+      </div>
     </div>
   );
 }

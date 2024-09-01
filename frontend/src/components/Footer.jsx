@@ -3,6 +3,7 @@ import { Box, Typography, IconButton, Input } from "@mui/joy";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import ColorLensRoundedIcon from "@mui/icons-material/ColorLensRounded";
+import Divider from "@mui/material/Divider";
 import SendIcon from "@mui/icons-material/Send";
 
 export default function Footer() {
@@ -56,6 +57,14 @@ export default function Footer() {
           >
             <ColorLensRoundedIcon />
           </IconButton>
+
+          <Divider
+            orientation="vertical"
+            variant="middle"
+            sx={{ bgcolor: "#ebebeb", display: { xs: "none", md: "block" } }}
+            flexItem
+          />
+
           <a
             href="https://github.com/geroarmani"
             target="_blank"

@@ -55,3 +55,9 @@
 .weather-info{
   font-size: 12px !important;
 }
+
+@media screen and (max-width: 468px) {
+  .uk-page-widget, .europe-page-widget {
+    margin: 20px 10px;
+  }
+}
