@@ -10,7 +10,7 @@ import ErrorPage from "./pages/Error";
 import RegisterPage, { action as registerAction } from "./pages/Register";
 import LoginPage, { action as loginAction } from "./pages/Login";
 import ProtectedRoute from "./pages/ProtectedRoute";
-import UserInfoPage, { action as userInfoAction } from "./pages/UserInfo";
+import UserInfoPage from "./pages/UserInfo";
 import FavoritesPage from "./pages/Favorites";
 import "./App.css";
 
@@ -44,7 +44,7 @@ const router = createBrowserRouter([
         path: "user",
         element: <ProtectedRoute />,
         children: [
-          { index: true, element: <UserInfoPage />, action: userInfoAction },
+          { index: true, element: <UserInfoPage /> },
         ],
       },
       {

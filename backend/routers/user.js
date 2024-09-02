@@ -7,6 +7,10 @@ router.post("/update", async (req, res) => {
   const { username, email } = req.body;
   const userId = req.session.userId;
 
+  if (!userId) {
+    return res.status(401).json({ message: "Unauthorized, please log in." });
+  }
+
   // Validate email and username
   if (!isValidEmail(email)) {
     console.log("Invalid email");

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Alert } from "@mui/material";
-import { Form, useActionData, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserProvider";
-import { redirect } from "react-router-dom";
 import Modal from "../components/Modal";
 import axios from "axios";
 
@@ -10,21 +9,43 @@ export default function UserInfo() {
   const { user, setUser } = useUser();
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
+  const [error, setError] = useState(null);  // Local error state
 
-  const actionData = useActionData();
   const navigate = useNavigate();
 
   const handleCancel = () => {
     navigate("../");
   };
 
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    setError(null);  // Clear previous error
+
+    try {
+      // Update user info on the server
+      const response = await axios.post("/api/user/update", { username, email }, {
+        withCredentials: true,
+      });
+
+      // Fetch the updated user information
+      const userResponse = await axios.get("/api/check", { withCredentials: true });
+      setUser(userResponse.data.user);
+
+      // Redirect after successful update
+      navigate("/");
+    } catch (error) {
+      // Capture and set the error message
+      const errorMessage = error.response?.data?.error || "Something went wrong.";
+      setError(errorMessage);
+    }
+  };
+
   return (
     <Modal onClose={handleCancel}>
-      <h3>User Deatils:</h3>
-      <Form
-        method="post"
+      <h3>User Details:</h3>
+      <form
         className="user-info-form"
-        // onSubmit={() => setUser({ ...user, username, email })}
+        onSubmit={handleFormSubmit}
       >
         <input
           type="text"
@@ -40,16 +61,9 @@ export default function UserInfo() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {/* <input
-          placeholder="Password"
-          type="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        /> */}
-        {actionData?.error && (
+        {error && (
           <p className="error" style={{ margin: "0", marginBottom: "0.7em" }}>
-            <Alert severity="error">{actionData.error}</Alert>
+            <Alert severity="error">{error}</Alert>
           </p>
         )}
         <div className="form-actions">
@@ -58,21 +72,7 @@ export default function UserInfo() {
           </button>
           <button type="submit">Update Info</button>
         </div>
-      </Form>
+      </form>
     </Modal>
   );
-}
-
-export async function action({ request }) {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-
-  try {
-    const result = await axios.post("/api/user/update", data, {
-      withCredentials: true,
-    });
-    return redirect("/");
-  } catch (e) {
-    return { error: e.response.data.error || "Something went wrong." };
-  }
 }

@@ -3,6 +3,7 @@ const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session")
+const helmet = require("helmet")
 const cors = require("cors");
 dotenv.config();
 
@@ -13,6 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 app.use(cookieParser())
+app.use(helmet())
 app.use(bodyParser.json())
 app.use(cors({
   origin: "http://localhost:5173",
