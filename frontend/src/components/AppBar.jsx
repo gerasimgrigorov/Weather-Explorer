@@ -29,6 +29,7 @@ const settings = [
 ];
 
 function NavBar() {
+  const backendUrl = import.meta.env.VITE_API_URL;
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
   const { user, setUser } = useUser();
@@ -37,7 +38,7 @@ function NavBar() {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("/api/check", {
+        const response = await axios.get(`${backendUrl}/api/check`, {
           withCredentials: true,
         });
         // console.log("Reponse for auth check: ", response);
@@ -68,7 +69,7 @@ function NavBar() {
 
   const handleLogout = async () => {
     try {
-      await axios.post("/api/logout", {}, { withCredentials: true });
+      await axios.post(`${backendUrl}/api/logout`, {}, { withCredentials: true });
       setUser(null);
       navigate("/");
     } catch (error) {

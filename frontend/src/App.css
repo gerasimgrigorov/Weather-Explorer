@@ -284,7 +284,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 30rem;
-  max-height: 60vh;
+  max-height: 65vh;
   background: #e2e5eb;
   border: none;
   border-radius: 6px;
@@ -401,6 +401,7 @@
   .widget-row {
     justify-content: center;
   }
+
 }
 
 @media screen and (max-width: 992px) {

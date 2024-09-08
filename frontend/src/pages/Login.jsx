@@ -47,11 +47,13 @@ export default function Login() {
 }
 
 export async function action({ request }) {
+  const backendUrl = import.meta.env.VITE_API_URL;
+
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
   try {
-    const result = await axios.post("/api/login", data, {
+    const result = await axios.post(`${backendUrl}/api/login`, data, {
       withCredentials: true,
     });
     console.log("Logged in successfully");

@@ -40,11 +40,13 @@ export default function Register() {
 }
 
 export async function action({ request }) {
+  const backendUrl = import.meta.env.VITE_API_URL;
+
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
 
   try {
-    await axios.post("/api/register", data, { withCredentials: true });
+    await axios.post(`${backendUrl}/api/register`, data, { withCredentials: true });
     console.log("Registered successfully");
     return redirect("/");
   } catch (error) {

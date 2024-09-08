@@ -6,6 +6,8 @@ import Modal from "../components/Modal";
 import axios from "axios";
 
 export default function UserInfo() {
+  const backendUrl = import.meta.env.VITE_API_URL;
+
   const { user, setUser } = useUser();
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
@@ -23,12 +25,12 @@ export default function UserInfo() {
 
     try {
       // Update user info on the server
-      const response = await axios.post("/api/user/update", { username, email }, {
+      const response = await axios.post(`${backendUrl}/api/user/update`, { username, email }, {
         withCredentials: true,
       });
 
       // Fetch the updated user information
-      const userResponse = await axios.get("/api/check", { withCredentials: true });
+      const userResponse = await axios.get(`${backendUrl}/api/check`, { withCredentials: true });
       setUser(userResponse.data.user);
 
       // Redirect after successful update

@@ -9,6 +9,7 @@ import WeatherList from "../components/WeatherList";
 const apiKey = import.meta.env.VITE_WEATHER_API_KEY;
 
 export default function Favorites() {
+  const backendUrl = import.meta.env.VITE_API_URL;
   const { user } = useUser();
   const navigate = useNavigate();
   const [favorites, setFavorites] = useState([]);
@@ -18,13 +19,14 @@ export default function Favorites() {
   useEffect(() => {
     async function loadFavorites() {
       try {
-        const result = await axios.get("/api/user/favorites", {
+        const result = await axios.get(`${backendUrl}/api/user/favorites`, {
           withCredentials: true,
         });
         const locations = result.data;
         console.log("Locations in the favorite: ", locations);
 
         const weatherDataPromises = locations.map(async (location) => {
+          console.log(location)
           const { latitude, longitude, address } = location;
           const weatherResult = await axios.get(
             `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${latitude},${longitude}?key=${apiKey}`

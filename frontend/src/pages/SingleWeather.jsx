@@ -38,17 +38,19 @@ export async function loader({ request }) {
 }
 
 export default function SingleWeatherPage() {
+  const backendUrl = import.meta.env.VITE_API_URL;
+
   const navigate = useNavigate();
   const location = useLoaderData();
   const [isFavorited, setIsFavorited] = useState();
 
-  // console.log(location)
+  // console.log(isFavorited)
 
   useEffect(() => {
     async function checkFavorite() {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/user/favorites/check",
+          `${backendUrl}/api/user/favorites/check`,
           {
             params: {
               latitude: location.latitude,
@@ -84,7 +86,7 @@ export default function SingleWeatherPage() {
   async function handleFavorite() {
     try {
       if (isFavorited) {
-        const result = await axios.delete("http://localhost:3000/api/user/favorites", {
+        const result = await axios.delete(`${backendUrl}/api/user/favorites`, {
           data: { latitude: location.latitude, longitude: location.longitude },
           withCredentials: true,
         });
@@ -93,7 +95,7 @@ export default function SingleWeatherPage() {
         }
       } else {
         const result = await axios.post(
-          "http://localhost:3000/api/user/favorites",
+          `${backendUrl}/api/user/favorites`,
           { latitude: location.latitude, longitude: location.longitude, address: location.resolvedAddress }, //fix the address to its shorter and clean every time
           { withCredentials: true }
         );
